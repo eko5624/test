@@ -8,8 +8,9 @@ jobs:
     runs-on: windows-2022
     steps:   
     - name: Set path
+      shell: cmd
       run: |
-        whereis iscc.exe
+        dir C:\Program Files (x86)
         
     - name: Install Yasm
       run: |
