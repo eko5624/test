@@ -7,6 +7,12 @@ jobs:
   build:
     runs-on: windows-2022
     steps:   
-    - name: Setup Toolchain
+    - name: Set path
+      shell: cmd
       run: |
-        set path
+        echo CLEAN_PATH=%path% > %GITHUB_ENV%
+        
+    - name: Install Yasm
+      run: |
+        curl -OL http://www.tortall.net/projects/yasm/releases/yasm-1.3.0-win64.exe 
+        mv yasm-1.3.0-win64.exe C:\Windows\yasm.exe        
