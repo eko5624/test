@@ -8,11 +8,11 @@ jobs:
     runs-on: windows-2022
     steps:   
     - name: Set path
-      shell: cmd
       run: |
-        echo CLEAN_PATH=%path% > %GITHUB_ENV%
+        whereis iscc.exe
         
     - name: Install Yasm
       run: |
         curl -OL http://www.tortall.net/projects/yasm/releases/yasm-1.3.0-win64.exe 
-        mv yasm-1.3.0-win64.exe C:\Windows\yasm.exe        
+        mv yasm-1.3.0-win64.exe C:\Windows\yasm.exe
+        
