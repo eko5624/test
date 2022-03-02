@@ -1,5 +1,5 @@
   
-name: build-weekly
+name: test
 
 on:
   workflow_dispatch:
@@ -13,7 +13,8 @@ jobs:
       run: |
         echo CLEAN_PATH=%path% > %GITHUB_ENV%
         
-    - name: Install Yasm
+    - name: Install Nasm
       run: |
-        curl -OL http://www.tortall.net/projects/yasm/releases/yasm-1.3.0-win64.exe 
-        mv yasm-1.3.0-win64.exe C:\Windows\yasm.exe 
+        curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
+        &'C:\Program Files\7-Zip\7z.exe' x nasm*.zip
+        mv D:/a/test/test/nasm-2.15.05/nasm.exe "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC" 
