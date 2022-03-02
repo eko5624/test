@@ -17,4 +17,4 @@ jobs:
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
         &'C:\Program Files\7-Zip\7z.exe' x nasm*.zip
-        mv D:/a/test/test/nasm-2.15.05/nasm.exe "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC" 
+        ls nasm-2.15.05 
