@@ -1,19 +1,19 @@
-name: CI
+  
+name: build-weekly
 
 on:
   workflow_dispatch:
-
-jobs:
+    
+jobs:  
   build:
     runs-on: windows-2022
     steps:   
     - name: Set path
       shell: cmd
       run: |
-        dir C:\Program Files (x86)
+        echo CLEAN_PATH=%path% > %GITHUB_ENV%
         
     - name: Install Yasm
       run: |
         curl -OL http://www.tortall.net/projects/yasm/releases/yasm-1.3.0-win64.exe 
-        mv yasm-1.3.0-win64.exe C:\Windows\yasm.exe
-        
+        mv yasm-1.3.0-win64.exe C:\Windows\yasm.exe 
