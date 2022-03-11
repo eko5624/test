@@ -18,7 +18,7 @@ jobs:
     - name: Install Nasm
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
-        mkdir mkdir All-in-One
+        mkdir All-in-One
         cp test All-in-One
         7z x nasm* -o'All-in-One'
         7z a All-in-One.7z All-in-One/*
