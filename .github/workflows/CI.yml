@@ -18,9 +18,9 @@ jobs:
     - name: Install Nasm
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
-        7z u -tzip nasm-2.15.05-win64.zip ./test
+        7z u -tzip nasm*.zip ./test
 
     - uses: actions/upload-artifact@v2
       with:
         name: build
-        path: nasm-2.15.05-win64.zip
+        path: nasm*.zip
