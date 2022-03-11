@@ -11,10 +11,11 @@ jobs:
     - name: Set path
       shell: cmd
       run: |
+        set path=%path%;C:\Program Files\7-Zip
         echo CLEAN_PATH=%path% > %GITHUB_ENV%
         
     - name: Install Nasm
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
-        &'C:\Program Files\7-Zip\7z.exe' x nasm*.zip
+        7z x nasm*.zip
         ls nasm-2.15.05 
