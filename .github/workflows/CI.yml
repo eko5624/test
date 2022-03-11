@@ -19,5 +19,5 @@ jobs:
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
         7z u -tzip nasm-2.15.05-win64.zip test
-        7z x nasm*.zip
+        7z x -y nasm*.zip
         ls nasm-2.15.05 
