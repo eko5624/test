@@ -18,9 +18,12 @@ jobs:
     - name: Install Nasm
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
-        7z u -tzip nasm*.zip ./test
+        mkdir mkdir All-in-One
+        cp test All-in-One
+        7z x nasm* -o'All-in-One'
+        7z a All-in-One.7z All-in-One/*
 
     - uses: actions/upload-artifact@v2
       with:
         name: build
-        path: nasm*.zip
+        path: All*.zip
