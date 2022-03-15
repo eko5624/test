@@ -42,3 +42,7 @@ jobs:
               ref: `master`
             })
             core.setOutput('sha', String(commit.data.sha))    
+
+      - name: Set path
+        run: |
+          echo CLEAN_PATH=$PATH > %GITHUB_ENV%
