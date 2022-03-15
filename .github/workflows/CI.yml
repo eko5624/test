@@ -27,3 +27,18 @@ jobs:
       with:
         name: build
         path: All*.7z
+
+  test:
+    runs-on: macos-11
+    steps: 
+      - name: 'Get mpv latest commit sha'
+        id: get_sha
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const commit = await github.rest.repos.getCommit({
+              owner: 'mpv-player',
+              repo: 'mpv',
+              ref: `master`
+            })
+            core.setOutput('sha', String(commit.data.sha))    
