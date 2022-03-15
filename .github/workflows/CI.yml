@@ -45,7 +45,7 @@ jobs:
 
       - name: Set path
         run: |
-          echo CLEAN_PATH=$PATH > %GITHUB_ENV%
+          echo $PATH
           
       - name: Install libass
         run: brew install libass
