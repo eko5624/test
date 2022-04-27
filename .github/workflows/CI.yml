@@ -11,8 +11,15 @@ jobs:
     - name: Set path
       shell: cmd
       run: |
-        set path=%path%;C:\Program Files\7-Zip
+        set path=%PATH%;C:\Program Files\7-Zip
         echo CLEAN_PATH=%path% > %GITHUB_ENV%
+        
+    - name: Get current date and random hash
+      run: |
+        echo "random_hash=$(echo $RANDOM | md5sum | head -c 20)" >> $GITHUB_ENV
+        
+    - name: Display the path
+      run: echo ${env:PATH}                
         
     - uses: actions/checkout@v3
     - name: Install Nasm
@@ -23,29 +30,10 @@ jobs:
         7z x nasm* -o'All-in-One'
         7z a All-in-One.7z All-in-One/*
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: build
-        path: All*.7z
-
   test:
-    runs-on: macos-11
-    steps: 
-      - name: 'Get mpv latest commit sha'
-        id: get_sha
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const commit = await github.rest.repos.getCommit({
-              owner: 'mpv-player',
-              repo: 'mpv',
-              ref: `master`
-            })
-            core.setOutput('sha', String(commit.data.sha))    
-
+    runs-on: macos-12
+    steps:    
       - name: Set path
         run: |
           echo $PATH
-          
-      - name: Install libass
-        run: brew install libass
+
