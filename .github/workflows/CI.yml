@@ -33,7 +33,7 @@ jobs:
      
     - name: ls
       run: |
-        ls ${{ env.PKG_CONFIG_PATH }}
+        ls $pythonLocation/lib/pkgconfig
    
     - name: Display the path
       run: echo ${env:PATH}                
