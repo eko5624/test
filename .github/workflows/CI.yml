@@ -18,6 +18,10 @@ jobs:
       run: |
         echo "random_hash=$(echo $RANDOM | md5sum | head -c 20)" >> $GITHUB_ENV
         
+    - name: ls python lib
+      run: |
+        ls /c/hostedtoolcache/windows/python/3.7.9/x64/lib/pkgconfig        
+        
     - name: Display the path
       run: echo ${env:PATH}                
         
