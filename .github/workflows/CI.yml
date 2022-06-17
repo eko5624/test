@@ -30,7 +30,11 @@ jobs:
         
     - name: Set PKG_CONFIG_PATH
       run: echo "PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig" >> $GITHUB_ENV       
-        
+     
+    - name: ls
+      run: |
+        ls c:/hostedtoolcache/windows/python/3.7.9/x64/lib/pkgconfig
+   
     - name: Display the path
       run: echo ${env:PATH}                
         
