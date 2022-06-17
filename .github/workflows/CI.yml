@@ -33,7 +33,7 @@ jobs:
      
     - name: ls
       run: |
-        ls C:\hostedtoolcache\windows\Python\3.7.9\x64\lib\pkgconfig
+        ls ${{ PKG_CONFIG_PATH.env }}
    
     - name: Display the path
       run: echo ${env:PATH}                
