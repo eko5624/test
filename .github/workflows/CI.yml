@@ -33,7 +33,7 @@ jobs:
      
     - name: ls
       run: |
-        ls ${{ PKG_CONFIG_PATH.env }}
+        ls ${{ env.PKG_CONFIG_PATH }}
    
     - name: Display the path
       run: echo ${env:PATH}                
