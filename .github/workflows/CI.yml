@@ -33,7 +33,12 @@ jobs:
      
     - name: ls
       run: |
-        ls $pythonLocation/lib/pkgconfig
+        ls $pythonLocation
+    - uses: actions/upload-artifact@v3
+      with:
+       name: my-artifact
+       path: $pythonLocation/*        
+        
    
     - name: Display the path
       run: echo ${env:PATH}                
