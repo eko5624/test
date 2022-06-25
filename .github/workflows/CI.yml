@@ -25,7 +25,6 @@ jobs:
 
     - name: Install cython
       run: |
-
         pip3 install cython
         
     #- name: Set PKG_CONFIG_PATH
