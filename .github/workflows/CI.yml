@@ -31,13 +31,16 @@ jobs:
     - name: Set PKG_CONFIG_PATH
       run: echo "PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig" >> $GITHUB_ENV       
      
-    - name: ls
+    - uses: actions/checkout@v3
+    - name: pack
       run: |
-        ls $pythonLocation
+        mkdir 123
+        cp $pythonLocation/* 123
+        7z a py.7z 123/*
     - uses: actions/upload-artifact@v3
       with:
        name: my-artifact
-       path: $pythonLocation/*        
+       path: ./*7z        
         
    
     - name: Display the path
