@@ -27,8 +27,8 @@ jobs:
       run: |
         C:\hostedtoolcache\windows\python\3.9.13\x64\python3.exe -m pip install --upgrade pip
         pip3 install cython
-        cp "C:\Program Files\Python39\libs\*" C:\hostedtoolcache\windows\python\3.9.13\x64\libs
-        cp "C:\Program Files\Python39\include\*" C:\hostedtoolcache\windows\python\3.9.13\x64\include 
+        cp "C:\\Program Files\\Python39\\libs\\*" C:\hostedtoolcache\windows\python\3.9.13\x64\libs
+        cp "C:\\Program Files\\Python39\\include\\*" C:\hostedtoolcache\windows\python\3.9.13\x64\include 
         
     #- name: Set PKG_CONFIG_PATH
     #  run: echo "PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig" >> $GITHUB_ENV       
