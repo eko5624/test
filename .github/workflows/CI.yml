@@ -18,17 +18,16 @@ jobs:
       run: |
         echo "random_hash=$(echo $RANDOM | md5sum | head -c 20)" >> $GITHUB_ENV
         
-    #- name: Setup Python
-    #  uses: actions/setup-python@v3
-    #  with:
-    #    python-version: '3.10'
+    - name: Setup Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
 
     - name: Install cython
       run: |
-        C:\hostedtoolcache\windows\python\3.9.13\x64\python3.exe -m pip install --upgrade pip
-        pip3 install cython
-        cp "C:\\Program Files\\Python39\\libs\\*" C:\hostedtoolcache\windows\python\3.9.13\x64\libs
-        cp "C:\\Program Files\\Python39\\include\\*" C:\hostedtoolcache\windows\python\3.9.13\x64\include 
+        python -m pip install --upgrade pip
+        pip install cython
+        Get-Command python.exe 
         
     #- name: Set PKG_CONFIG_PATH
     #  run: echo "PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig" >> $GITHUB_ENV       
@@ -37,7 +36,7 @@ jobs:
     - name: pack
       run: |
         mkdir 123
-        cp C:\hostedtoolcache\windows\Python\3.9.13\x64\* 123
+        cp C:\hostedtoolcache\windows\Python\3.10.5\x64\* 123
         7z a py.7z 123
     - uses: actions/upload-artifact@v3
       with:
