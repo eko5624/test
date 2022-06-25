@@ -36,11 +36,11 @@ jobs:
       run: |
         mkdir 123
         cp $pythonLocation/* 123
-        7z a py.7z 123/*
+        7z a py.7z 123
     - uses: actions/upload-artifact@v3
       with:
        name: my-artifact
-       path: ./*7z        
+       path: py.7z        
         
    
     - name: Display the path
