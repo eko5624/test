@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: windows-2022
     steps:   
-    - name: Set path
-      shell: cmd
-      run: |
-        set path=C:\hostedtoolcache\windows\python\3.9.13\x64;C:\Program Files\7-Zip;
-        echo CLEAN_PATH=%path% > %GITHUB_ENV%
+    #- name: Set path
+    #  shell: cmd
+    #  run: |
+    #    set path=C:\hostedtoolcache\windows\python\3.9.13\x64;C:\Program Files\7-Zip;
+    #    echo CLEAN_PATH=%path% > %GITHUB_ENV%
         
     - name: Get current date and random hash
       run: |
