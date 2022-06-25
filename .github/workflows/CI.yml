@@ -25,7 +25,7 @@ jobs:
 
     - name: Install cython
       run: |
-        python3 -m pip install --upgrade pip
+        C:\hostedtoolcache\windows\python\3.9.13\x64\python3.exe -m pip install --upgrade pip
         pip3 install cython
         
     #- name: Set PKG_CONFIG_PATH
