@@ -11,7 +11,7 @@ jobs:
     - name: Set path
       shell: cmd
       run: |
-        set path=C:\hostedtoolcache\windows\python\3.10.5\x64;C:\Program Files\7-Zip;
+        set path=C:\hostedtoolcache\windows\python\3.9.13\x64;C:\Program Files\7-Zip;
         echo CLEAN_PATH=%path% > %GITHUB_ENV%
         
     - name: Get current date and random hash
@@ -35,7 +35,7 @@ jobs:
     - name: pack
       run: |
         mkdir 123
-        cp C:\hostedtoolcache\windows\Python\3.10.5\x64\* 123
+        cp C:\hostedtoolcache\windows\Python\3.9.13\x64\* 123
         7z a py.7z 123
     - uses: actions/upload-artifact@v3
       with:
