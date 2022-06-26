@@ -41,7 +41,7 @@ jobs:
         mkdir 123
         cp -r C:\hostedtoolcache\windows\Python\3.10.5\x64\* 123
         7z a py.7z 123
-        media 456
+        mkdir 456
         cp -r C:\Users\runneradmin\AppData\Roaming\Python\Python310\*
         7z a py310.7z 456
     - uses: actions/upload-artifact@v3
