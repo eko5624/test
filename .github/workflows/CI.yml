@@ -47,7 +47,9 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
        #name: my-artifact
-       path: py.7z Py310.7z        
+       path: |
+         py.7z 
+         py310.7z        
         
    
     - name: Display the path
