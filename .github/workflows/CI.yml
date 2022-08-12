@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: windows-2022
     steps:   
-    #- name: Set path
-    #  shell: cmd
-    #  run: |
-    #    set path=C:\hostedtoolcache\windows\python\3.9.13\x64;C:\Program Files\7-Zip;
-    #    echo CLEAN_PATH=%path% > %GITHUB_ENV%
+    - name: Set path
+      shell: cmd
+      run: |
+        echo %PATH%
+
         
     - name: Get current date and random hash
       run: |
@@ -26,31 +26,7 @@ jobs:
     - name: Install cython
       run: |
         python -m pip install --upgrade pip
-        pip install cython
-
-    - name: Patch Python 3.10 Include Paths
-      run: |
-        (Split-Path -Path (Get-Command python.exe).Path) 
-        
-    #- name: Set PKG_CONFIG_PATH
-    #  run: echo "PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig" >> $GITHUB_ENV       
-     
-    - uses: actions/checkout@v3
-    - name: pack
-      run: |
-        mkdir 123
-        cp -r C:\hostedtoolcache\windows\Python\3.10.5\x64\* 123
-        7z a py.7z 123
-        mkdir 456
-        cp -r C:\Users\runneradmin\AppData\Roaming\Python\Python310\*
-        7z a py310.7z 456
-    - uses: actions/upload-artifact@v3
-      with:
-       #name: my-artifact
-       path: |
-         py.7z 
-         py310.7z        
-        
+        pip install cython         
    
     - name: Display the path
       run: echo ${env:PATH}                
