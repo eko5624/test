@@ -43,5 +43,5 @@ jobs:
       - name: Set path
         run: |
           echo $PATH
-          ls /usr/local/lib/android/sdk/ndk/23.2.8568313/sources/third_party/vulkan/src/include/vulkan
+          ls /usr/local/lib/android/sdk/ndk/23.2.8568313/toolchains
 
