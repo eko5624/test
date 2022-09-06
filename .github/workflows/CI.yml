@@ -44,4 +44,4 @@ jobs:
         run: |
           echo $PATH
           ls /usr/local/lib/android/sdk/ndk/23.2.8568313/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/vulkan
-
+          ls /usr/local/lib/android/sdk/ndk/23.2.8568313/sources/third_party/vulkan/src/include/vulkan
