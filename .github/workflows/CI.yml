@@ -16,22 +16,11 @@ jobs:
         
     - name: Get current date and random hash
       run: |
-        echo "random_hash=$(echo $RANDOM | md5sum | head -c 20)" >> $GITHUB_ENV
-        
-    - name: Setup Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.10'
-
-    - name: Install cython
-      run: |
-        python -m pip install --upgrade pip
-        pip install cython         
+        echo "random_hash=$(echo $RANDOM | md5sum | head -c 20)" >> $GITHUB_ENV         
    
     - name: Display the path
       run: echo ${env:PATH}                
         
-    - uses: actions/checkout@v3
     - name: Install Nasm
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
@@ -40,10 +29,17 @@ jobs:
         7z x nasm* -o'All-in-One'
         7z a All-in-One.7z All-in-One/*
 
-  test:
+  macos-env:
     runs-on: macos-12
     steps:    
       - name: Set path
         run: |
           echo $PATH
+          
+  linux-env:
+    runs-on: ubuntu-22.04
+    steps:    
+      - name: Set path
+        run: |
+          echo $PATH          
 
