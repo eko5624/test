@@ -20,7 +20,8 @@ jobs:
    
     - name: Display the path
       run: echo ${env:PATH}                
-        
+
+    - uses: actions/checkout@v3
     - name: Install Nasm
       run: |
         curl -OL https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/win64/nasm-2.15.05-win64.zip 
