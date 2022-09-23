@@ -23,8 +23,8 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          let deps = [mpv]
-          let mpv = {owner: 'mpv-player', repo: 'mpv', ref: 'master'}
+          let deps = [mpvs]
+          let mpvs = {owner: 'mpv-player', repo: 'mpv', ref: 'master'}
           for (dep in deps) {
             const commit = await github.rest.repos.getCommit(dep)
             core.setOutput('sha', String(commit.data.sha))
