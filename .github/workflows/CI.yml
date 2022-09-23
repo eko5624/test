@@ -16,7 +16,24 @@ jobs:
         
     - name: Get current date and random hash
       run: |
-        echo "random_hash=$(echo $RANDOM | md5sum | head -c 20)" >> $GITHUB_ENV         
+        echo "random_hash=$(echo $RANDOM | md5sum | head -c 20)" >> $GITHUB_ENV  
+        
+    - name: Get mpv latest commit sha
+      id: mpv_sha
+      uses: actions/github-script@v6
+      with:
+        script: |
+          let deps = [mpv, ffmpeg]
+          let mpv = {owner: 'mpv-player', repo: 'mpv', ref: 'master'}
+          let ffmpeg = {owner: 'FFmpeg', repo: 'FFmpeg', ref: 'master'}
+          for (dep in deps) {
+            const commit = await github.rest.repos.getCommit({dep})
+            core.setOutput('sha', String(commit.data.sha))
+          }
+
+    - name: Add MPV_SHORT_SHA env 
+      run: echo "MPV_SHORT_SHA=`echo ${{ steps.mpv_sha.outputs.sha }}| cut -c1-7`" >> $GITHUB_ENV         
+      shell: bash         
    
     - name: Display the path
       run: echo ${env:PATH}                
