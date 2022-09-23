@@ -23,8 +23,8 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          let mpvs = {owner: 'mpv-player', repo: 'mpv', ref: 'master'}
-          const commit = await github.rest.repos.getCommit(mpvs)
+          let mpv = {owner: 'mpv-player', repo: 'mpv', ref: 'master'}
+          const commit = await github.rest.repos.getCommit(mpv)
           core.setOutput('sha', String(commit.data.sha))
 
     - name: Add MPV_SHORT_SHA env 
