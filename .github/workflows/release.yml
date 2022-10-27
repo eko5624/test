@@ -30,4 +30,4 @@ jobs:
         -H "Accept:application/vnd.github.v3+json" \
         -H "Authorization:token ${{ secrets.GITHUB_TOKEN }}" \
         https://api.github.com/repos/eko5624/test/releases \
-        -d '{"tag_name":"dev","target_commitish":"main","name":"tag_test11","body":"Description of the release","draft":false,"prerelease":false,"generate_release_notes":false}' 
+        -d '{"tag_name":"dev","target_commitish":"main","body_path":"vulkan-dev/*.zst","draft":false,"prerelease":false,"generate_release_notes":false}' 
