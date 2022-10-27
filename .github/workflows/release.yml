@@ -1,0 +1,24 @@
+name: test
+
+on:
+  workflow_dispatch:
+    
+jobs:  
+  build:
+    runs-on: ubuntu-latest
+    steps:   
+    - uses: actions/checkout@main
+    - name: Release 1  
+      shell: bash
+      run: |
+        for f in vulkan-dev/*.zst; do curl -u eko5624:${{ github.token }} --connect-timeout 60 --retry 999 --retry-delay 5 --retry-all-errors -s -X POST -H "Accept: application/vnd.github.v3+json" -H "Content-Type: $(file -b --mime-type $f)" https://uploads.github.com/repos/eko5624/test/releases/dev/assets?name=$(basename $f) --data-binary @$file; done done
+        
+    - name: Release 2  
+      shell: bash
+      run: |
+        curl \
+        -X POST \
+        -H "Accept:application/vnd.github.v3+json" \
+        -H "Authorization:token ${{ secrets.GITHUB_TOKEN }}" \
+        https://api.github.com/repos/eko5624/test/releases \
+        -d '{"tag_name":"dev","target_commitish":"main","name":"tag_test11","body":"Description of the release","draft":false,"prerelease":false,"generate_release_notes":false}' 
