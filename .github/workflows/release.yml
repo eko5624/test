@@ -16,7 +16,7 @@ jobs:
         id=$(curl -u ek5624:$GH_TOKEN $CURL_RETRIES -s -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/eko5624/test/releases -d @- <<END | jq -r '.id'
         {
           "tag_name": "dev",
-          "name": "vulkan",
+          "name": "vulkan"
         }
         END
         )
