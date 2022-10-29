@@ -12,6 +12,7 @@ jobs:
     steps:   
     - uses: actions/checkout@main
     - name: Release 1  
+      she'll: bash
       run: |
         id=$(curl -u eko5624:${{ secrets.BOT }} \
           -X POST \
