@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@main
     - name: Release 1  
       run: |
-        id=$(curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: ${{ secrets.BOT }}" https://api.github.com/repos/eko5624/test/releases -d @- <<END | jq -r '.id'
+        id=$(curl -u eko5624:$GH_TOKEN $CURL_RETRIES -s -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/eko5624/test/releases -d @- <<END | jq -r '.id'
         {
           "tag_name": "dev"
         }
