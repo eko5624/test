@@ -16,7 +16,7 @@ jobs:
         id=$(curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: ${{ secrets.BOT }}" https://api.github.com/repos/eko5624/test/releases -d @- <<END | jq -r '.id'
         {
           "tag_name": "dev"
-          }
-          END
-          )
+        }
+        END
+        )
         for f in vulkan-dev/*.zst; do curl -u eko5624:$GH_TOKEN $CURL_RETRIES -X POST -H "Accept: application/vnd.github.v3+json" -H "Content-Type: $(file -b --mime-type $f)" https://uploads.github.com/repos/eko5624/test/releases/$id/assets?name=$(basename $f) --data-binary @$f; done
