@@ -13,7 +13,16 @@ jobs:
     - uses: actions/checkout@main
     - name: Release 1  
       shell: bash
-      run: |              
+      run: |
+        asset_id=$(curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/releases \
+          -d @- <<END | jq -r '.[].id'
+        {
+          "name": "vulkan-dev*"
+        }
+        END
+        )      
         asset_id=$(curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
           -XGET \
           -H "Content-Type: application/json" \
