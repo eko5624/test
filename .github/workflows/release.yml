@@ -19,7 +19,7 @@ jobs:
           curl \
             -X POST \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: $GITHUB_ACTOR $GH_TOKEN" \
+            -H "Authorization: $GITHUB_ACTOR:$GH_TOKEN \
             -H "Content-Type: $(file -b --mime-type $f)" \
             https://uploads.github.com/repos/${{ github.repository }}/releases/81832156/assets?name=$(basename $f) \
             --data-binary @$f; 
