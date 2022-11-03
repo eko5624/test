@@ -16,6 +16,8 @@ jobs:
       run: |
         echo "release_id=`curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
           https://api.github.com/repos/${{ github.repository }}/releases/tags/dev | jq -r '.id'`" >> $GITHUB_ENV
-          
-        echo $PATH  
+    
+    - name: Release 1  
+      shell: bash          
+      run: echo $PATH  
 
