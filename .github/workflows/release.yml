@@ -22,7 +22,7 @@ jobs:
           -X DELETE \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/${{ github.repository }}/releases/assets/$asset_id
-    - name: Release 
+    - name: Release
       shell: bash 
       run: |
         release_id=$(curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
