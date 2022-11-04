@@ -14,8 +14,8 @@ jobs:
     - name: Release 1  
       shell: bash
       run: |
-        echo "$asset_id=`curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
-          https://api.github.com/repos/${{ github.repository }}/releases/tags/dev | jq '.assets[] | select(.name | startswith("vulkan-dev"))' | '.id'`" >> $GITHUB_ENV                  
+        asset_id=$(curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
+          https://api.github.com/repos/${{ github.repository }}/releases/tags/dev | jq -r '.assets[] | select(.name | startswith("vulkan-dev"))' | '.id')                
         curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
           -X DELETE \
           -H "Accept: application/vnd.github.v3+json" \
