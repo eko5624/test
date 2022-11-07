@@ -7,7 +7,7 @@ github_repository="eko5624/test"
 asset_id=$(curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
   -H "Accept: application/vnd.github.v3+json" \
   https://api.github.com/repos/${github_repository}/releases/tags/dev \
-  | jq -r '.assets[] | select(.name | startswith("$1")) | .id') 
+  | jq -r '.assets[] | select(.name | startswith($1)) | .id') 
   
 curl -u $GITHUB_ACTOR:$GH_TOKEN $CURL_RETRIES \
   -X DELETE \
