@@ -15,4 +15,4 @@ jobs:
       shell: bash 
       run: |
         chmod +x ./release-dev.sh
-        ./release-dev.sh vulkan-dev vulkan-dev
+        ./release-dev.sh 'vulkan-dev' 'vulkan-dev'
