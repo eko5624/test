@@ -1,6 +1,9 @@
 #!/bin/bash
 set -x
 
+GITHUB_ACTOR="eko5624"
+GH_TOKEN="${github.token}"
+CURL_RETRIES="--connect-timeout 60 --retry 5 --retry-delay 5"
 github_repository="eko5624/test"
 
 # Delete assets
