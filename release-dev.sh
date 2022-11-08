@@ -2,7 +2,7 @@
 set -x
 
 GITHUB_ACTOR="eko5624"
-GH_TOKEN=''
+GH_TOKEN='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'
 CURL_RETRIES="--connect-timeout 60 --retry 5 --retry-delay 5"
 github_repository="eko5624/test"
 
