@@ -5,14 +5,11 @@ on:
     
 jobs:  
   test:
-    runs-on: ubuntu-latest
-    steps:   
-    - uses: actions/checkout@main
-    - name: Release
-      env:
-        GH_TOKEN: ${{ github.token }}
-        CURL_RETRIES: "--connect-timeout 60 --retry 5 --retry-delay 5"    
-      shell: bash 
+    runs-on: windows-2022
+    steps:
+    - uses: msys2/setup-msys2@v2
+    - name: Test
+      shell: msys2 {0}
       run: |
-        chmod +x ./release-dev.sh
-        ./release-dev.sh 'vulkan-dev' 'vulkan-dev'
+        file `cygpath -S`/vulkan.dll
+        
