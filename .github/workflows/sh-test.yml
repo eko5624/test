@@ -11,5 +11,5 @@ jobs:
     - name: Test
       shell: msys2 {0}
       run: |
-        file `cygpath -S`/vulkan.dll
+        file `cygpath -S`/vulkan-1.dll
         
