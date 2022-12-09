@@ -1,0 +1,20 @@
+name: nvchecker
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #- cron: '0 0 * * *'
+  push:
+    paths:
+    - 'xxoo.toml'
+
+jobs:
+  version_check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main        
+    - name: Check Latest Version
+      run: |
+        sudo apt install python3-pycurl python3-tornado
+        pip3 install -U in-place nvchecker
+        nvchecker --help
