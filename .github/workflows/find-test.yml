@@ -19,7 +19,7 @@ jobs:
           curl -OL https://github.com/eko5624/mpv-macos-intel/releases/download/2023-01-09/All-in-One-2023-01-09.zip
           unzip All-in-One-2023-01-09.zip
           mv All-in-One/mpv.app test123
-          sudo find ./test123 -name "mpv.app" -exec cp -R {} test456 \;
+          sudo find ./test123 -name "mpv.app" -exec cp -r {} test456 \;
           ls test456
         
     
