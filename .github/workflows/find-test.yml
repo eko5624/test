@@ -16,7 +16,8 @@ jobs:
    
       - name: test
         run: |
-          sudo find /usr -type d -name "zlib" -exec mv -t test123 {} +
+          sudo find /usr -type d -name "zlib" -exec mv {} test123 \;
+          ls test123/zlib
         
     
         
