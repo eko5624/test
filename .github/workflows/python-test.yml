@@ -16,7 +16,7 @@ jobs:
    
       - name: test
         run: |
-          ls */Library/Frameworks/Python.framework/*
+          ls */Library/Frameworks/Python.framework
         
     
         
