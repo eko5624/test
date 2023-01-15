@@ -11,7 +11,7 @@ jobs:
     steps:         
       - name: test
         run: |
-          sudo find /usr -type d -name "Cellar" -exec ls {} +
+          find /usr -type d -name "Cellar" -exec ls {} +
         
     
         
