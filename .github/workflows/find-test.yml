@@ -1,0 +1,17 @@
+name: find
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '0 0 * * MON'
+
+jobs:
+  build:
+    runs-on: macos-12
+    steps:         
+      - name: test
+        run: |
+          sudo find /usr -type d -name "Cellar"
+        
+    
+        
