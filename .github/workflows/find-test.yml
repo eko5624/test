@@ -8,10 +8,15 @@ on:
 jobs:
   build:
     runs-on: macos-12
-    steps:         
+    steps:  
+      - name: pwd
+        run: |
+          pwd
+          mkdir test123
+   
       - name: test
         run: |
-          find /usr -type d -name "Cellar" -exec ls {} +
+          sudo find /usr -type d -name "zlib" -exec mv -t test123 {} +
         
     
         
