@@ -12,6 +12,6 @@ jobs:
       - name: test
         run: |
           brew install vapoursynth
-          ls /usr/local/Cellar/vapoursynth/61
+          ls /usr/local/Cellar/vapoursynth/61/lib
     
         
