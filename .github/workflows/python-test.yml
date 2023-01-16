@@ -1,0 +1,24 @@
+name: python
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '0 0 * * MON'
+
+jobs:
+  test:
+    runs-on: macos-12
+    steps:   
+      - name: test
+        run: |
+          brew install --overwrite python@3.11 
+          
+      - name: run python@3.11  
+        run: |  
+          /usr/local/bin/python3.11
+
+      - name: run python3 
+        run: |  
+          /usr/local/bin/python3
+   
+        
