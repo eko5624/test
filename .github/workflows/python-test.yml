@@ -20,5 +20,9 @@ jobs:
       - name: run python3 
         run: |  
           /usr/local/bin/python3 -V
+
+      - name: run python
+        run: |  
+          /usr/local/bin/python -V
    
         
