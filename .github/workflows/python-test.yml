@@ -11,7 +11,7 @@ jobs:
     steps:   
       - name: test
         run: |
-          brew install --overwrite python@3.10 python@3.11 
+          brew reinstall --overwrite python@3.10 python@3.11 
           
       - name: run python@3.11  
         run: |  
