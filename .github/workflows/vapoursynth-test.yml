@@ -1,0 +1,17 @@
+name: vapoursynth
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '0 0 * * MON'
+
+jobs:
+  test:
+    runs-on: macos-12
+    steps:   
+      - name: test
+        run: |
+          brew install vapoursynth
+          ls /usr/local/Cellar/vapoursynth
+    
+        
