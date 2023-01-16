@@ -25,9 +25,11 @@ jobs:
       - name: run python3 
         run: |  
           /usr/local/bin/python3 -V
+          brew config
 
       - name: HOMEBREW_PREFIX
         run: |
           echo "${HOMEBREW_PREFIX}"
+
    
         
