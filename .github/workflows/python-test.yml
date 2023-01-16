@@ -26,9 +26,8 @@ jobs:
         run: |  
           /usr/local/bin/python3 -V
 
-      - name: run python
-        run: |  
-          /usr/local/bin/python -V
+      - name: HOMEBREW_PREFIX
+        run: |
           echo "${HOMEBREW_PREFIX}"
    
         
