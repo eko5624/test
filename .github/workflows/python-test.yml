@@ -15,10 +15,10 @@ jobs:
           
       - name: run python@3.11  
         run: |  
-          /usr/local/bin/python3.11
+          /usr/local/bin/python3.11 -V
 
       - name: run python3 
         run: |  
-          /usr/local/bin/python3
+          /usr/local/bin/python3 -V
    
         
