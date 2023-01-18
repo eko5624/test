@@ -1,4 +1,4 @@
-name: compatibility
+name: sdk
 
 on:
   workflow_dispatch:
