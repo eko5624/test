@@ -1,0 +1,29 @@
+name: check
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '0 0 * * MON'
+
+jobs:
+  test:
+    runs-on: macos-12
+    steps:
+    - name: Check for back compatibility
+      run: |
+        curl -OL https://github.com/eko5624/mpv-macos-intel/releases/download/2023-01-17/All-in-One-2023-01-17.zip
+        unzip All-in-One-2023-01-17.zip
+        cd All-in-One/mpv.app/Contents/MacOS/lib
+        for l in *.dylib
+        do
+          echo $l
+          count=0
+          count=`otool -l $l | grep -c minos` || :
+          if [ $count -gt 0 ]; then
+            echo 'find bad dylib. need to recompile it'
+            exit 1
+          else
+            echo 'ok'
+          fi
+        done
+        cd ..
