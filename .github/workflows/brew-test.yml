@@ -37,4 +37,4 @@ jobs:
         brew uninstall "${intersection[@]}" --ignore-dependencies
 
         brew install "${all_deps[@]}" --ignore-dependencies
-        brew install "${mpv_deps[@]}" "${ffmpeg_deps[@]}" --ignore-dependencies
+        brew install "${mpv_deps[@]}" "${ffmpeg_deps[@]}"
