@@ -76,8 +76,8 @@ jobs:
         printf '%s\n' "${all_deps[@]}" | sort) <(
         printf '%s\n' "${sys_deps[@]}" | sort)))
         exclude_list=(autoconf)
-        for((i=0; i<${#exclude_list[@]}; i++)); do
-	    intersection=(${intersection[@]/${exclude_list[i]}})
+        for exclude_dep in ${exclude_list[@]}; do
+	    intersection=(${intersection[@]/$exclude_dep})
 	done
 
         brew uninstall --ignore-dependencies "${intersection[@]}"
