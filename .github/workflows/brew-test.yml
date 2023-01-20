@@ -74,12 +74,11 @@ jobs:
         IFS=$'\n'; set -f
         intersection=($(comm -12 <(
         printf '%s\n' "${all_deps[@]}" | sort) <(
-        printf '%s\n' "${sys_deps[@]}" | sort)))
+        printf '%s\n' "${sys_deps[@]}" | sort)))       
         exclude_list=("autoconf")
-
-        for del in "${exclude_list[@]}"; do
-          intersection=(${intersection[@]/$del});
+        for excl_dep in "${exclude_list[@]}"; do
+          intersection=(${intersection[@]/$excl_dep});
         done
-
-        brew uninstall --ignore-dependencies "${intersection[@]}"
+        for inter_dep in "${intersection[@]"; do
+          brew uninstall --ignore-dependencies $inter_dep
         brew install "${all_deps[@]}"
