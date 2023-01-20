@@ -16,4 +16,4 @@ jobs:
     - name: test
       run: |
         brew install libass
-        brew deps libass
+        brew deps -10 libass
