@@ -15,5 +15,4 @@ jobs:
     steps:   
     - name: test
       run: |
-        brew install libass
         brew install -s `brew deps -n --include-build --include-test libass` 
