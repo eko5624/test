@@ -16,53 +16,20 @@ jobs:
     - name: test
       run: |       
         mpv_dep=(
-          python@3.10 
-          python@3.11 
-          ninja 
-          meson 
-          glslang 
-          jpeg-turbo
-          libass 
-          libarchive 
-          little-cms2 
-          luajit 
-          mujs 
-          uchardet 
+          libass
           vapoursynth
         )
+
         ffmpeg_deps=(
           dav1d
           fontconfig
           freetype
-          frei0r
-          gnutls
-          lame
-          libbluray
-          libbs2b
-          libcaca
-          libmodplug
-          librist
-          libsoxr
-          libssh
-          libvidstab
-          libvorbis
-          libvpx
-          opencore-amr
-          openjpeg
-          openssl@1.1
-          opus
-          rav1e
-          rubberband
-          sdl2
-          snappy
-          speex
-          srt
-          tesseract
-          theora
-          webp
-          xvid
-          xz
-          zeromq
-          zimg            
+          frei0r            
         )
-        brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}"
+        all_deps=(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}")     
+        echo "all deps..\n'${all_deps[@]}'"
+        brew deps -n --union --include-build --include-test "${all_deps[@]}"
+        sys_deps=(brew list)
+        echo "sys deps..\n '${sys_deps[@]}'"
+        if [[ del_dep in "${sys_deps[@]}" and del_dep in "${all_deps[@]}" ]]:
+            brew uninstall "$del_dep --ignore-dependencies
