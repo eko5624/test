@@ -77,7 +77,7 @@ jobs:
         printf '%s\n' "${sys_deps[@]}" | sort)))
         exclude_list=("autoconf")
 
-        for del in "${exclude_list[@]}"; do
+        for del in ${exclude_list[@]}; do
           intersection=("${intersection[@]/$del}");
         done
 
