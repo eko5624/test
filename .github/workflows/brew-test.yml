@@ -15,4 +15,39 @@ jobs:
     steps:   
     - name: test
       run: |       
-        brew deps -n --union --include-build --include-test dav1d libass gnutls 
+        ffmpeg_deps=(
+          dav1d
+          fontconfig
+          freetype
+          frei0r
+          gnutls
+          lame
+          libbluray
+          libbs2b
+          libcaca
+          libmodplug
+          librist
+          libsoxr
+          libssh
+          libvidstab
+          libvorbis
+          libvpx
+          opencore-amr
+          openjpeg
+          openssl@3
+          opus
+          rav1e
+          rubberband
+          sdl2
+          snappy
+          speex
+          srt
+          tesseract
+          theora
+          webp
+          xvid
+          xz
+          zeromq
+          zimg            
+        )        
+        brew deps -n --union --include-build --include-test $ffmpeg_deps
