@@ -15,4 +15,4 @@ jobs:
     steps:   
     - name: test
       run: |       
-        brew deps -n --union --include-build --include-test dav1d libass 
+        brew deps -n --union --include-build --include-test dav1d libass gnutls 
