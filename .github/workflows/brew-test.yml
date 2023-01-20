@@ -50,4 +50,4 @@ jobs:
           zeromq
           zimg            
         )        
-        brew deps -n --union --include-build --include-test $ffmpeg_deps
+        brew deps -n --union --include-build --include-test "${ffmpeg_deps[@]}"
