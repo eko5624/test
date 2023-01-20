@@ -28,9 +28,12 @@ jobs:
           frei0r            
         )
         all_deps=(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}")     
-        echo "all deps..\n'${all_deps[@]}'"
-        brew deps -n --union --include-build --include-test "${all_deps[@]}"
+        echo all deps..\n"${all_deps[@]}"
+
         sys_deps=(brew list)
-        echo "sys deps..\n '${sys_deps[@]}'"
-        if [[ del_dep in "${sys_deps[@]}" and del_dep in "${all_deps[@]}" ]]:
+        echo sys deps..\n"${sys_deps[@]}"
+        if [[ del_dep in "${sys_deps[@]}" and del_dep in "${all_deps[@]}" ]]; then
             brew uninstall "$del_dep --ignore-dependencies
+
+        brew install "${all_deps[@]}" --ignore-dependencies
+        brew install "${mpv_deps[@]}" "${ffmpeg_deps[@]}" --ignore-dependencies
