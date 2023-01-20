@@ -79,6 +79,6 @@ jobs:
         for excl_dep in "${exclude_list[@]}"; do
           intersection=(${intersection[@]/$excl_dep});
         done
-        for inter_dep in "${intersection[@]"; do
-          brew uninstall --ignore-dependencies $inter_dep
+        for inter_dep in "${intersection[@]}"; do
+          brew uninstall --ignore-dependencies $inter_dep;
         brew install "${all_deps[@]}"
