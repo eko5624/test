@@ -15,7 +15,8 @@ jobs:
     steps:   
     - name: test
       run: |       
-        mpv_dep=(
+        set -x
+        mpv_deps=(
           libass
           vapoursynth
         )
