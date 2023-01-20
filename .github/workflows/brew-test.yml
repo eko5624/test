@@ -34,6 +34,7 @@ jobs:
         echo "${sys_deps[@]}"
         if [[ del_dep in "${sys_deps[@]}" && del_dep in "${all_deps[@]}" ]]; then
             brew uninstall "$del_dep --ignore-dependencies
+        fi
 
         brew install "${all_deps[@]}" --ignore-dependencies
         brew install "${mpv_deps[@]}" "${ffmpeg_deps[@]}" --ignore-dependencies
