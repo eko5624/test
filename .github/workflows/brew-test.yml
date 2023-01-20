@@ -68,15 +68,18 @@ jobs:
           zeromq
           zimg            
         )
-        all_deps=$(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}")     
-        sys_deps=$(brew list)
+        all_deps=($(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}"))     
+        sys_deps=($(brew list))
         
         IFS=$'\n'; set -f
         intersection=($(comm -12 <(
         printf '%s\n' "${all_deps[@]}" | sort) <(
         printf '%s\n' "${sys_deps[@]}" | sort)))
-        intersection=(${intersection[*]/autoconf})
-        brew uninstall --ignore-dependencies "${intersection[@]}"
+        exclude_list=(autoconf)
+        for((i=0; i<${#exclude_list[@]}; i++)); do
+	    intersection=(${intersection[@]/${exclude_list[i]}})
+	done
 
-        brew install "${all_deps[@]}" --ignore-dependencies
-        brew install "${mpv_deps[@]}" "${ffmpeg_deps[@]}"
+        brew uninstall --ignore-dependencies "${intersection[@]}"
+        brew install "${all_deps[@]}"
+        brew install "${mpv_deps[@]}"
