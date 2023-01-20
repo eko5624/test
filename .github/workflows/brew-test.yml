@@ -65,4 +65,4 @@ jobs:
           zeromq
           zimg            
         )
-        brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}")
+        brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}"
