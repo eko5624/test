@@ -72,10 +72,10 @@ jobs:
         sys_deps=$(brew list)
         
         IFS=$'\n'; set -f
-        intersection=$(comm -12 <(
+        intersection=($(comm -12 <(
         printf '%s\n' "${all_deps[@]}" | sort) <(
-        printf '%s\n' "${sys_deps[@]}" | sort))
-        unset intersection[0]
+        printf '%s\n' "${sys_deps[@]}" | sort)))
+        intersection=(${intersection[*]/autoconf})
         brew uninstall "${intersection[@]}"
 
         brew install "${all_deps[@]}" --ignore-dependencies
