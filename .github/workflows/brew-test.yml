@@ -16,8 +16,19 @@ jobs:
     - name: test
       run: |       
         set -x
-        mpv_deps=(
-          libass
+        mpv_dep=(
+          python@3.10 
+          python@3.11 
+          ninja 
+          meson 
+          glslang 
+          jpeg-turbo
+          libass 
+          libarchive 
+          little-cms2 
+          luajit 
+          mujs 
+          uchardet 
           vapoursynth
         )
 
@@ -25,7 +36,36 @@ jobs:
           dav1d
           fontconfig
           freetype
-          frei0r            
+          frei0r
+          gnutls
+          lame
+          libbluray
+          libbs2b
+          libcaca
+          libmodplug
+          librist
+          libsoxr
+          libssh
+          libvidstab
+          libvorbis
+          libvpx
+          opencore-amr
+          openjpeg
+          openssl@1.1
+          opus
+          rav1e
+          rubberband
+          sdl2
+          snappy
+          speex
+          srt
+          tesseract
+          theora
+          webp
+          xvid
+          xz
+          zeromq
+          zimg            
         )
         all_deps=$(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}")     
         sys_deps=$(brew list)
