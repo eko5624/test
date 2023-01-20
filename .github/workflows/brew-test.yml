@@ -29,9 +29,12 @@ jobs:
         )
         all_deps=$(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}")     
         sys_deps=$(brew list)
-        if del_dep in "${sys_deps[@]}" && del_dep in "${all_deps[@]}"; then
-            brew uninstall $del_dep --ignore-dependencies
-        fi
+        
+        IFS=$'\n'; set -f
+        intersection=$(comm -12 <(
+        printf '%s\n' "${all_deps[@]}" | sort) <(
+        printf '%s\n' "${sys_deps[@]}" | sort))
+        brew uninstall "${intersection[@]}" --ignore-dependencies
 
         brew install "${all_deps[@]}" --ignore-dependencies
         brew install "${mpv_deps[@]}" "${ffmpeg_deps[@]}" --ignore-dependencies
