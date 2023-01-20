@@ -21,6 +21,7 @@ jobs:
           python@3.11 
           ninja 
           meson 
+          brotli
           glslang 
           jpeg-turbo
           libass 
