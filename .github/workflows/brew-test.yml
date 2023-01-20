@@ -82,4 +82,3 @@ jobs:
 
         brew uninstall --ignore-dependencies "${intersection[@]}"
         brew install "${all_deps[@]}"
-        brew install "${mpv_deps[@]}"
