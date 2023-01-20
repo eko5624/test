@@ -29,7 +29,7 @@ jobs:
         )
         all_deps=$(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}")     
         sys_deps=$(brew list)
-        if [[ del_dep in "${sys_deps[@]}" ]] && [[ del_dep in "${all_deps[@]}" ]]; then
+        if del_dep in "${sys_deps[@]}" && del_dep in "${all_deps[@]}"; then
             brew uninstall "$del_dep --ignore-dependencies
         fi
 
