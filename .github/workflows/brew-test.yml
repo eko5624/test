@@ -78,8 +78,8 @@ jobs:
         exclude_list=(autoconf)
 
         for del in "${exclude_list[@]}"; do
-	      intersection=("${intersection[@]/$del}")
-	    done
+	  intersection=("${intersection[@]/$del}")
+	done
 
         brew uninstall --ignore-dependencies "${intersection[@]}"
         brew install "${all_deps[@]}"
