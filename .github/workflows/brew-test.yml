@@ -14,5 +14,5 @@ jobs:
       HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1 
     steps:   
     - name: test
-      run: |
-        brew install -s `brew deps -n --include-build --include-test libass` 
+      run: |       
+        brew deps -n --include-build --include-test dav1d libass 
