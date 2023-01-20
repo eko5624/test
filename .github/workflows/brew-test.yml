@@ -76,7 +76,7 @@ jobs:
         printf '%s\n' "${all_deps[@]}" | sort) <(
         printf '%s\n' "${sys_deps[@]}" | sort)))
         intersection=(${intersection[*]/autoconf})
-        brew uninstall "${intersection[@]}"
+        brew uninstall --ignore-dependencies "${intersection[@]}"
 
         brew install "${all_deps[@]}" --ignore-dependencies
         brew install "${mpv_deps[@]}" "${ffmpeg_deps[@]}"
