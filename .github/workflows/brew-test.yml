@@ -71,14 +71,15 @@ jobs:
         all_deps=($(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}"))     
         sys_deps=($(brew list))
         
-        IFS=$'\n'; set -f
-        intersection=($(comm -12 <(
-        printf '%s\n' "${all_deps[@]}" | sort) <(
-        printf '%s\n' "${sys_deps[@]}" | sort)))       
-        exclude_list=("autoconf")
-        for excl_dep in "${exclude_list[@]}"; do
-          intersection=(${intersection[@]/$excl_dep});
+        intersection=()
+        for all in "${all_deps[@]}"; do
+          for sys in "${sys_deps[@]}"; do
+            if [[ $all = $sys ]]; then
+              intersection+=("$all")
+            fi
+          done
         done
+
         for inter_dep in "${intersection[@]}"; do
           brew uninstall --ignore-dependencies $inter_dep;
         done
