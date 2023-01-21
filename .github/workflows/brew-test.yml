@@ -74,7 +74,7 @@ jobs:
         intersection=()
         for all in "${all_deps[@]}"; do
           for sys in "${sys_deps[@]}"; do
-            if [[ $all = $sys ]]; then
+            if [[ $all == $sys ]]; then
               intersection+=("$all")
             fi
           done
