@@ -80,7 +80,15 @@ jobs:
           done
         done
 
-        for inter_dep in "${intersection[@]}"; do
-          brew uninstall --ignore-dependencies $inter_dep;
+        exclude_lst=("autoconf")
+        for index in "${!intersection[@]}"; do
+          for exclude in "${exclude_lst[@]}"; do
+            if [[ ${intersection[$index]} == $exclude ]]; then
+            unset 'intersection[index]'
+            fi
+          done
         done
+        #for inter_dep in "${intersection[@]}"; do
+        brew uninstall --ignore-dependencies "${intersection[@]}
+        #done
         brew install "${all_deps[@]}"
