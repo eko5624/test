@@ -89,6 +89,6 @@ jobs:
           done
         done
         #for inter_dep in "${intersection[@]}"; do
-        brew uninstall --ignore-dependencies "${intersection[@]}
+        brew uninstall --ignore-dependencies "${intersection[@]}"
         #done
         brew install "${all_deps[@]}"
