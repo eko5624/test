@@ -68,7 +68,7 @@ jobs:
           zeromq
           zimg            
         )
-        all_deps=($(brew deps -n --union --include-build --include-test "${mpv_deps[@]}" "${ffmpeg_deps[@]}"))     
+        all_deps=($(brew deps -n --union --include-build "${mpv_deps[@]}" "${ffmpeg_deps[@]}"))     
         sys_deps=($(brew list))
         
         IFS=$'\n'; set -f
@@ -84,7 +84,5 @@ jobs:
             fi
           done
         done
-        #for inter_dep in "${intersection[@]}"; do
         brew uninstall --ignore-dependencies "${intersection[@]}"
-        #done
         brew install -s "${all_deps[@]}"
