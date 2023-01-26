@@ -95,6 +95,7 @@ jobs:
           done
         done
         brew uninstall --ignore-dependencies "${intersection[@]}"
+        brew install -s pkg-config
         brew install -s "${required_deps[@]}"
         brew install -s "${deps[@]}"
 
