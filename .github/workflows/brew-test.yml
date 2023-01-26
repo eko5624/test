@@ -77,7 +77,10 @@ jobs:
           zeromq
           zimg            
         )
-        all_deps=($(brew deps -n --union "${mpv_deps[@]}" "${ffmpeg_deps[@]}"))     
+
+        deps=("${mpv_deps[@]}" "${ffmpeg_deps[@]}")        
+        required_deps=($(brew deps -n --union "${deps[@]}"))          
+        all_deps=("${deps[@]}" "${required_deps[@]}")
         sys_deps=($(brew list))
         
         IFS=$'\n'; set -f
@@ -94,4 +97,6 @@ jobs:
           done
         done
         brew uninstall --ignore-dependencies "${intersection[@]}"
-        brew install -s "${all_deps[@]}"
+        brew install -s "${required_deps[@]}"
+        brew install -s "${deps[@]}"
+
