@@ -16,9 +16,7 @@ jobs:
     - name: test
       run: |       
         set -x
-
-        # Uninstall bottled dependencies
-        brew uninstall --ignore-dependencies --force openssl@1.1
+        brew update
         brew cleanup
 
         # Remove stray upstream python binary symlinks under /usr/local
