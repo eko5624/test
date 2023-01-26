@@ -68,7 +68,7 @@ jobs:
           zeromq
           zimg            
         )
-        all_deps=($(brew deps -n --union --include-build "${mpv_deps[@]}" "${ffmpeg_deps[@]}"))     
+        all_deps=($(brew deps -n --union "${mpv_deps[@]}" "${ffmpeg_deps[@]}"))     
         sys_deps=($(brew list))
         
         IFS=$'\n'; set -f
