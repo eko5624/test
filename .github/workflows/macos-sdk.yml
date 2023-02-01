@@ -35,10 +35,12 @@ jobs:
       run: |
         echo "TOOLCHAINS ENV====="
         echo "$TOOLCHAINS"
-        echo "find swift===="
-        sudo xcrun --toolchain $TOOLCHAINS --find swift
+        echo "find clang===="
+        sudo xcrun --toolchain clang --find clang
         echo "toolchain swift version===="
-        sudo xcrun --toolchain $TOOLCHAINS swift --version   
+        sudo xcrun --toolchain swift swift --version   
+        echo "swift version===="
+        sudo swift -v
     
     - name: Install Swift 4.x toolchain
       id: swift4
