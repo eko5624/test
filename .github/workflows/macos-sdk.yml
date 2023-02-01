@@ -33,7 +33,7 @@ jobs:
     
     - name: show swift
       run: |
-        xcrun --toolchain $TOOLCHAINS --find swift
+        sudo xcrun --toolchain $TOOLCHAINS --find swift
         echo "swift -v========="
         swift -v    
     
