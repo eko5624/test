@@ -13,5 +13,5 @@ jobs:
       run: |
         echo "xcode sdks======="
         ls /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
-        echo "CommandLineTools sdks"
+        echo "CommandLineTools sdks======="
         ls /Library/Developer/CommandLineTools/SDKs
