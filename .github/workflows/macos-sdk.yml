@@ -36,8 +36,12 @@ jobs:
         # Swift 4.x toolchain
         curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
         sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
-        echo "TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)" >> $GITHUB_ENV
+        echo "before set toolchain env, run xcrun --toolchain swift swift --version========="
         xcrun --toolchain swift swift --version
+        echo "TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)" >> $GITHUB_ENV
+        echo "after set toolchain env, run xcrun --toolchain swift swift --version========="
+        xcrun --toolchain swift swift --version
+        echo "swift -v========="
         swift -v
     
     - name: Check
