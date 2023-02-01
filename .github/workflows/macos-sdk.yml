@@ -30,17 +30,22 @@ jobs:
           sudo mv $SDK_PATH/MacOSX.sdk $SDK_PATH/MacOSX13.1.sdk
           sudo ln -s $SDK_PATH/MacOSX10.13.sdk $SDK_PATH/MacOSX.sdk
           sudo /usr/libexec/PlistBuddy -c "Set :MinimumSDKVersion 10.13" /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist
+    
+    - name: show swift
+      run: |
+        xcrun --toolchain $TOOLCHAINS --find swift
+        echo "swift -v========="
+        swift -v    
+    
     - name: Install Swift 4.x toolchain
       id: swift4
       run: |
         # Swift 4.x toolchain
         curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
         sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
-        echo "before set toolchain env, run xcrun --toolchain swift swift --version========="
-        xcrun --toolchain swift swift --version
-        echo "TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)" >> $GITHUB_ENV
-        echo "after set toolchain env, run xcrun --toolchain swift swift --version========="
-        xcrun --toolchain swift swift --version
+        # TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
+        # xcrun --toolchain $TOOLCHAINS
+        # xcodebuild -toolchain $TOOLCHAINS
         echo "swift -v========="
         swift -v
     
