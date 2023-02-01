@@ -33,9 +33,10 @@ jobs:
     
     - name: show swift
       run: |
-        sudo xcrun --toolchain $TOOLCHAINS --find swift
+        echo $TOOLCHAINS
+        sudo xcrun --toolchain $TOOLCHAINS swift --version
         echo "swift -v========="
-        swift -v    
+        sudo swift -v    
     
     - name: Install Swift 4.x toolchain
       id: swift4
