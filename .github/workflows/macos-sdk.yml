@@ -65,4 +65,4 @@ jobs:
         echo "CommandLineTools sdks===="
         ls /Library/Developer/CommandLineTools/SDKs
         echo "XcodeDefault.xctoolchain===="
-        /Applications/Xcode_14.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+        ls /Applications/Xcode_14.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
