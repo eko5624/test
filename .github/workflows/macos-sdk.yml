@@ -39,7 +39,7 @@ jobs:
     - name: Check
       run: |
         echo "xcode sdks======="
-        ls /Applications/Xcode_11.7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+        ls /Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         echo "CommandLineTools sdks===="
         ls /Library/Developer/CommandLineTools/SDKs
         echo "XcodeDefault.xctoolchain===="
