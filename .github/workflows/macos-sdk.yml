@@ -8,29 +8,7 @@ on:
 jobs:
   test:
     runs-on: macos-12
-    env:   
-      MACOSX_DEPLOYMENT_TARGET: 10.13
-      SDKROOT: "/Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      MACOS_SDK: "/Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      SDK_PATH: "/Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
-      EXTRA_CFLAGS: "-mmacosx-version-min=10.13 -isysroot /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      EXTRA_CXXFLAGS: "-mmacosx-version-min=10.13 -isysroot /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      EXTRA_LDFLAGS: "-mmacosx-version-min=10.13 -isysroot /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      SWIFT_FLAGS: "-target x86_64-apple-macosx10.13"
-      CC: clang
-      CXX: clang++
-    steps:
-    - name: Install MacOSX 10.13 SDK
-      id: macossdk
-      run: |
-        # MacOSX10.14 SDK
-        curl -OL https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX10.13.sdk.tar.xz
-        tar -C $SDK_PATH -xf MacOSX10.13.sdk.tar.xz
-          sudo rm -rf $SDK_PATH/MacOSX13.1.sdk
-          sudo mv $SDK_PATH/MacOSX.sdk $SDK_PATH/MacOSX13.1.sdk
-          sudo ln -s $SDK_PATH/MacOSX10.13.sdk $SDK_PATH/MacOSX.sdk
-          sudo /usr/libexec/PlistBuddy -c "Set :MinimumSDKVersion 10.13" /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist
-    
+    steps:   
     - name: show swift
       run: |
         echo "TOOLCHAINS ENV====="
@@ -44,25 +22,25 @@ jobs:
         echo "swift version===="
         sudo swift -v
     
-    - name: Install Swift 4.x toolchain
-      id: swift4
-      run: |
+    #- name: Install Swift 4.x toolchain
+    #  id: swift4
+    #  run: |
         # Swift 4.x toolchain
-        curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
-        sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
-        TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
-        echo "find swift===="
-        sudo xcrun --toolchain swift --find swift
-        echo "toolchain swift version===="
-        sudo xcrun --toolchain swift swift --version        
-        echo "TOOLCHAINS swift version===="
-        sudo xcrun --toolchain $TOOLCHAINS swift --version
+        #curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
+        #sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
+        #TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
+        #echo "find swift===="
+        #sudo xcrun --toolchain swift --find swift
+        #echo "toolchain swift version===="
+        #sudo xcrun --toolchain swift swift --version        
+        #echo "TOOLCHAINS swift version===="
+        #sudo xcrun --toolchain $TOOLCHAINS swift --version
     
     - name: Check
       run: |
         echo "xcode sdks======="
-        ls /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+        ls /Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         echo "CommandLineTools sdks===="
         ls /Library/Developer/CommandLineTools/SDKs
         echo "XcodeDefault.xctoolchain===="
-        ls /Applications/Xcode_14.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+        ls /Applications/Xcode_12.5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
