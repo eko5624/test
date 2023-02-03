@@ -22,7 +22,13 @@ jobs:
         sudo mv $SDK_PATH/MacOSX.sdk $SDK_PATH/MacOSX11.3.sdk
         sudo ln -s $SDK_PATH/MacOSX10.15.sdk $SDK_PATH/MacOSX.sdk
         sudo /usr/libexec/PlistBuddy -c "Set :MinimumSDKVersion 10.15" /Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist
-    
+   
+    - name: Switch to Xcode 12.5.1
+      id: xcode1251
+      run: |
+        sudo xcode-select --reset
+        sudo xcode-select -s /Applications/Xcode_12.5.1.app/Contents/Developer   
+   
     - name: Check
       run: |
         echo "CommandLineTools sdks===="
