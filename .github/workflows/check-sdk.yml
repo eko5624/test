@@ -38,5 +38,8 @@ jobs:
         echo "find swift===="
         sudo xcrun --toolchain swift --find swift
         echo "toolchain swift version===="
-        sudo xcrun --toolchain swift swift --version        
-        
+        sudo xcrun --toolchain swift swift --version
+        echo "show TOOLCHAINS ENV===="
+        TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)   
+        echo "$TOOLCHAINS"     
+     
