@@ -1,0 +1,21 @@
+name: check-sdk
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '0 0 * * MON'
+
+jobs:
+  test:
+    runs-on: macos-11
+    steps:   
+    - name: remove xcode.app
+      run: |
+        sudo rm -rf /Applications/Xcode*.app
+    
+    - name: Check
+      run: |
+        echo "CommandLineTools sdks===="
+        ls /Library/Developer/CommandLineTools/SDKs
+        echo "show sdk version"
+        xcrun --show-sdk-version
