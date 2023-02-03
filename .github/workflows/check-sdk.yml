@@ -8,10 +8,20 @@ on:
 jobs:
   test:
     runs-on: macos-11
-    steps:   
-    - name: remove xcode.app
+    env:
+      SDKROOT: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
+      MACOS_SDK: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+      SDK_PATH: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"    
+    steps: 
+    - name: Switch to MacOSX 10.15 SDK
+      id: macossdk
       run: |
-        sudo rm -rf /Applications/Xcode*.app
+        curl -OL https://github.com/phracker/MacOSX-SDKs/releases/download/10.15/MacOSX10.15.sdk.tar.xz
+        tar -C $SDK_PATH -xf MacOSX10.15.sdk.tar.xz
+        sudo rm -rf $SDK_PATH/MacOSX11.3.sdk
+        sudo mv $SDK_PATH/MacOSX.sdk $SDK_PATH/MacOSX11.3.sdk
+        sudo ln -s $SDK_PATH/MacOSX10.15.sdk $SDK_PATH/MacOSX.sdk
+        sudo /usr/libexec/PlistBuddy -c "Set :MinimumSDKVersion 10.15" /Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist
     
     - name: Check
       run: |
