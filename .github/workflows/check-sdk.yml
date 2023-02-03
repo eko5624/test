@@ -35,3 +35,8 @@ jobs:
         ls /Library/Developer/CommandLineTools/SDKs
         echo "show sdk version"
         xcrun --show-sdk-version
+        echo "find swift===="
+        sudo xcrun --toolchain swift --find swift
+        echo "toolchain swift version===="
+        sudo xcrun --toolchain swift swift --version        
+        
