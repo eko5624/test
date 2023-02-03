@@ -47,7 +47,7 @@ jobs:
         sudo xcrun --toolchain swift --find swift
         echo "toolchain swift version===="
         sudo xcrun --toolchain swift swift --version
-        export TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
+        export TOOLCHAINS=org.swift.42420190329a
         echo "show TOOLCHAINS ENV===="
         echo "$TOOLCHAINS" 
         echo "show org.swift.42420190329a version===="
