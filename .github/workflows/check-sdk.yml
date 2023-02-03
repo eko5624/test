@@ -11,7 +11,8 @@ jobs:
     env:
       SDKROOT: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
       MACOS_SDK: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      SDK_PATH: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"    
+      SDK_PATH: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
+      SWIFT_FLAGS: "-target x86_64-apple-macosx10.13" 
     steps: 
     - name: Switch to MacOSX 10.15 SDK
       id: macossdk
@@ -39,7 +40,7 @@ jobs:
         sudo xcrun --toolchain swift --find swift
         echo "toolchain swift version===="
         sudo xcrun --toolchain swift swift --version
-        echo "show TOOLCHAINS ENV===="
-        TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)   
-        echo "$TOOLCHAINS"     
+        echo "show org.swift.42420190329a version===="
+        export TOOLCHAINS=org.swift.42420190329a 
+        sudo xcrun --toolchain swift swift --version    
      
