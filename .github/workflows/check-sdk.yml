@@ -27,7 +27,7 @@ jobs:
     - name: Install Swift 4.x toolchain
       id: swift4
       run: |
-        swift 4.x toolchain
+        #swift 4.x toolchain
         curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
         sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
   
@@ -47,7 +47,9 @@ jobs:
         sudo xcrun --toolchain swift --find swift
         echo "toolchain swift version===="
         sudo xcrun --toolchain swift swift --version
+        export TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
+        echo "show TOOLCHAINS ENV===="
+        echo "$TOOLCHAINS" 
         echo "show org.swift.42420190329a version===="
-        export TOOLCHAINS=org.swift.42420190329a 
         sudo xcrun --toolchain swift swift --version    
      
