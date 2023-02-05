@@ -53,5 +53,5 @@ jobs:
         echo "show org.swift.42420190329a version===="
         sudo xcrun --toolchain swift swift --version
         echo "show MACOS_SDK_VERSION ENV"
-        suco xcrun --sdk macosx -show-sdk-version
+        sudo xcrun --sdk macosx -show-sdk-version
      
