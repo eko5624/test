@@ -49,7 +49,7 @@ jobs:
         echo "show tree===="
         
         brew install tree
-        tree /Applications/Xcode_12.5.1.app/Contents/Developer
+        tree /Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         echo "show org.swift.42420190329a version===="
         sudo xcrun --toolchain swift swift --version
         echo "show MACOS_SDK_VERSION ENV"
