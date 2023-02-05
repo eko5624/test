@@ -41,14 +41,14 @@ jobs:
       run: |
         echo "CommandLineTools sdks===="
         ls /Library/Developer/CommandLineTools/SDKs
-        echo "show sdk path"
+        echo "show sdk path===="
         sudo xcrun --sdk macosx --show-sdk-path
-        echo "show MACOS_SDK ENV"
-        echo "$MACOS_SDK"
         echo "toolchain swift version===="
         sudo xcrun --toolchain swift swift --version
         export TOOLCHAINS=org.swift.42420190329a
         echo "show tree===="
+        
+        brew install tree
         tree /Applications/Xcode_12.5.1.app/Contents/Developer
         echo "show org.swift.42420190329a version===="
         sudo xcrun --toolchain swift swift --version
