@@ -48,8 +48,8 @@ jobs:
         echo "toolchain swift version===="
         sudo xcrun --toolchain swift swift --version
         export TOOLCHAINS=org.swift.42420190329a
-        echo "show TOOLCHAINS ENV===="
-        echo "$TOOLCHAINS"
+        echo "show tree
+        tree /Applications/Xcode_12.5.1.app/Contents/Developer
         echo "show org.swift.42420190329a version===="
         sudo xcrun --toolchain swift swift --version
         echo "show MACOS_SDK_VERSION ENV"
