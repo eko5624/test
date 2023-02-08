@@ -9,10 +9,10 @@ jobs:
   test:
     runs-on: macos-10.15
     env:
-      SDKROOT: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
-      MACOS_SDK: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      SDK_PATH: "/Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
-      SWIFT_FLAGS: "-target x86_64-apple-macosx10.13" 
+      SDKROOT: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
+      MACOS_SDK: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+      SDK_PATH: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
+      SWIFT_FLAGS: "-target x86_64-apple-macosx10.14" 
     steps: 
     #- name: Switch to MacOSX 10.15 SDK
     #  id: macossdk
