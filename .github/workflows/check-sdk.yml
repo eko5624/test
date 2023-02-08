@@ -53,5 +53,5 @@ jobs:
         echo "show MACOS_SDK_VERSION"
         sudo xcrun --sdk macosx -show-sdk-version
         echo "show clang version===="
-        sudo xcrun --find clang clang --version
+        sudo xcrun --find clang
      
