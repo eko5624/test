@@ -52,6 +52,12 @@ jobs:
         #sudo xcrun --toolchain swift swift --version
         echo "show MACOS_SDK_VERSION"
         sudo xcrun --sdk macosx -show-sdk-version
-        echo "show clang version===="
+        echo "show clang path===="
         sudo xcrun --find clang
-     
+        echo "usr/bin clang version====" 
+        sudo /usr/bin/clang --version
+        echo "CLTs clang version====" 
+        sudo /Library/Developer/CommandLineTools/usr/bin/clang --version
+   
+
+
