@@ -46,10 +46,10 @@ jobs:
         echo "show sdk path===="
         sudo xcrun --sdk macosx --show-sdk-path
         echo "toolchain swift version===="
-        #sudo xcrun --toolchain swift swift --version
-        #export TOOLCHAINS=org.swift.42420190329a
-        echo "show org.swift.42420190329a version===="
         sudo xcrun --toolchain swift swift --version
+        #export TOOLCHAINS=org.swift.42420190329a
+        #echo "show org.swift.42420190329a version===="
+        #sudo xcrun --toolchain swift swift --version
         echo "show MACOS_SDK_VERSION"
         sudo xcrun --sdk macosx -show-sdk-version
         echo "show clang version===="
