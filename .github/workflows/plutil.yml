@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-10.15
+    runs-on: macos-12
     #env:
       #SDKROOT: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
       #MACOS_SDK: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
