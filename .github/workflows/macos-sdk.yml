@@ -22,21 +22,26 @@ jobs:
         echo "swift version===="
         sudo swift -v
     
-    #- name: Install Swift 4.x toolchain
-    #  id: swift4
-    #  run: |
-        # Swift 4.x toolchain
-        #curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
-        #sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
-        #TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
-        #echo "find swift===="
-        #sudo xcrun --toolchain swift --find swift
-        #echo "toolchain swift version===="
-        #sudo xcrun --toolchain swift swift --version        
-        #echo "TOOLCHAINS swift version===="
-        #sudo xcrun --toolchain $TOOLCHAINS swift --version
+    - name: Install Swift 4.x toolchain
+      id: swift4
+      run: |
+        Swift 4.x toolchain
+        curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
+        sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
+        TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
+        echo "find swift===="
+        sudo xcrun --toolchain swift --find swift
+        echo "toolchain swift version===="
+        sudo xcrun --toolchain swift swift --version        
+        echo "TOOLCHAINS swift version===="
+        sudo xcrun --toolchain $TOOLCHAINS swift --version
+        
+    - name: Check swift path
+      run: |
+        swiftStdlibTool=$(xcrun --find swift-stdlib-tool)
+        echo "$swiftStdlibTool"
     
-    - name: Check
+    - name: Check SDK
       run: |
         echo "xcode sdks======="
         ls /Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
