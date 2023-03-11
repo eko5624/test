@@ -26,7 +26,7 @@ jobs:
       run: |
         curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
         sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
-        TOOLCHAINS=$(plutil -extract CFBundleIdentifier raw /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
+        TOOLCHAINS=TOOLCHAINS=$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" /Library/Developer/Toolchains/swift-latest.xctoolchain/Info.plist)
         echo "find swift===="
         sudo xcrun --toolchain swift --find swift
         echo "toolchain swift version===="
