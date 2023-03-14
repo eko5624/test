@@ -19,7 +19,7 @@ for dylib in "${mpv_otool[@]}"; do
   mpv_dylibs_otool+=("${mpv_dylib_otool[@]}")
 done
 mpv_dylibs_otool=($(echo "${mpv_dylibs_otool[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
-echo "${mpv_dylibs_otool[@]}" > $DIR/mpv_dylibs_otool
+echo "${mpv_dylibs_otool[@]}" > $PACKAGES/mpv/build/mpv_dylibs_otool
 
 dylibs_otool=()
 for dylib in "${mpv_dylibs_otool[@]}"; do
@@ -27,7 +27,7 @@ for dylib in "${mpv_dylibs_otool[@]}"; do
   dylibs_otool+=("${dylib_otool[@]}")
 done	
 dylibs_otool=($(echo "${dylibs_otool[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
-echo "${dylibs_otool[@]}" > $DIR/dylibs_otool
+echo "${dylibs_otool[@]}" > $PACKAGES/mpv/build/dylibs_otool
 
 all_dylibs=(${mpv_otool[@]} ${mpv_dylibs_otool[@]} ${dylibs_otool[@]})
 all_dylibs=($(echo "${all_dylibs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
