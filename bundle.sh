@@ -7,7 +7,7 @@ PACKAGES=$DIR
 sudo cp -r $PACKAGES/mpv/TOOLS/osxbundle/mpv.app $PACKAGES/mpv/build
 sudo cp $PACKAGES/mpv/build/mpv $PACKAGES/mpv/build/mpv.app/Contents/MacOS
 pushd $PACKAGES/mpv/build/mpv.app/Contents/MacOS
-ln -s mpv mpv-bundle
+sudo ln -s mpv mpv-bundle
 popd
 
 mpv_otool=($(otool -L $PACKAGES/mpv/build/mpv.app/Contents/MacOS/mpv | grep -e '\t' | grep -Ev "\/usr\/lib|\/System|@rpath" | awk '{ print $1 }'))
@@ -34,9 +34,7 @@ all_dylibs=($(echo "${all_dylibs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
 echo "${all_dylibs[@]}" > $PACKAGES/mpv/build/all_dylibs
 
 for f in "${all_dylibs[@]}"; do
-  if [[ "$(basename $f)" != "libswift"* ]]; then
-    find $(dirname $f) -name "$(basename $f)" -print0 | xargs -0 -I {} sudo cp {} $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib
-  fi  
+  sudo cp $f $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib
 done
 
 #removing swift rpath definitions towards dev tools
@@ -53,11 +51,9 @@ for dylib in "${mpv_otool[@]}"; do
 done
 
 for f in $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib/*.dylib; do
-  if [[ "$(basename $f)" != "libswift"* ]]; then
-    install_name_tool -id "@executable_path/lib/$(basename $f)" "$PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib/$(basename $f)"
-    dylib_tool=($(otool -L $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib/$(basename $f) | grep -Ev "\/usr\/lib|\/System|@rpath" | awk '{ print $1 }'))
-    for dylib in "${dylib_tool[@]}"; do
-      install_name_tool -change $dylib @executable_path/lib/$(basename $dylib) $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib/$(basename $f)
-    done
-  fi   
+  install_name_tool -id "@executable_path/lib/$(basename $f)" "$PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib/$(basename $f)"
+  dylib_tool=($(otool -L $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib/$(basename $f) | grep -Ev "\/usr\/lib|\/System|@rpath" | awk '{ print $1 }'))
+  for dylib in "${dylib_tool[@]}"; do
+    install_name_tool -change $dylib @executable_path/lib/$(basename $dylib) $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib/$(basename $f)
+  done 
 done
