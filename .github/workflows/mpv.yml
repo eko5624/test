@@ -18,7 +18,7 @@ jobs:
     - name: Install dependencies
       run: |
         brew cleanup
-        brew ninja meson
+        brew install ninja meson
         brew install --only-dependencies mpv
 
     - name: Checkout
