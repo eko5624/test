@@ -4,8 +4,8 @@ DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PACKAGES=$DIR
 
 #copy all *.dylib to mpv.app
-cp -r $PACKAGES/mpv/TOOLS/osxbundle/mpv.app $PACKAGES/mpv/build
-cp $PACKAGES/mpv/build/mpv $PACKAGES/mpv/build/mpv.app/Contents/MacOS
+sudo cp -r $PACKAGES/mpv/TOOLS/osxbundle/mpv.app $PACKAGES/mpv/build
+sudo cp $PACKAGES/mpv/build/mpv $PACKAGES/mpv/build/mpv.app/Contents/MacOS
 pushd $PACKAGES/mpv/build/mpv.app/Contents/MacOS
 ln -s mpv mpv-bundle
 popd
@@ -35,7 +35,7 @@ echo "${all_dylibs[@]}" > $PACKAGES/mpv/build/all_dylibs
 
 for f in "${all_dylibs[@]}"; do
   if [[ "$(basename $f)" != "libswift"* ]]; then
-    find $(dirname $f) -name "$(basename $f)" -print0 | xargs -0 -I {} cp {} $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib
+    find $(dirname $f) -name "$(basename $f)" -print0 | xargs -0 -I {} sudo cp {} $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib
   fi  
 done
 
