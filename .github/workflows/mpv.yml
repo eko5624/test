@@ -20,6 +20,7 @@ jobs:
         brew cleanup
         brew install ninja meson
         brew install --only-dependencies mpv
+        brew uninstall --ignore-dependencies vapoursynth
 
     - name: Checkout
       uses: actions/checkout@main
