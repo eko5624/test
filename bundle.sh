@@ -26,7 +26,15 @@ for dylib in "${mpv_dylibs_otool[@]}"; do
   dylib_otool=($(otool -L $dylib | grep -e '\t' | grep -Ev "\/usr\/lib|\/System|@rpath" | awk '{ print $1 }'))
   dylibs_otool+=("${dylib_otool[@]}")
 done	
-#dylibs_otool=($(echo "${dylibs_otool[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+dylibs_otool=($(echo "${dylibs_otool[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+
+for dylib in "${dylibs_otool[@]}"; do
+  dylib_dylib_otool=($(otool -L $dylib | grep -e '\t' | grep -Ev "\/usr\/lib|\/System|@rpath" | awk '{ print $1 }'))
+  if [[ "${#dylib_dylib_otool[@]}" >1 ]]; then
+    dylibs_otool+=("${dylib_dylib_otool[@]}")
+  fi  
+done	
+dylibs_otool=($(echo "${dylibs_otool[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
 echo "${dylibs_otool[@]}" > $PACKAGES/mpv/build/dylibs_otool
 
 all_dylibs=(${mpv_otool[@]} ${mpv_dylibs_otool[@]} ${dylibs_otool[@]})
