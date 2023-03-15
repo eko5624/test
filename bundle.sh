@@ -30,7 +30,7 @@ dylibs_otool=($(echo "${dylibs_otool[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 
 for dylib in "${dylibs_otool[@]}"; do
   dylib_dylib_otool=($(otool -L $dylib | grep -e '\t' | grep -Ev "\/usr\/lib|\/System|@rpath" | awk '{ print $1 }'))
-  if [[ "${#dylib_dylib_otool[@]}" >1 ]]; then
+  if [[ "${#dylib_dylib_otool[@]}" > 1 ]]; then
     dylibs_otool+=("${dylib_dylib_otool[@]}")
   fi  
 done	
