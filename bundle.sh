@@ -45,9 +45,9 @@ for f in "${all_dylibs[@]}"; do
   sudo cp $f $PACKAGES/mpv/build/mpv.app/Contents/MacOS/lib
 done
 
-#removing swift rpath definitions towards dev tools
-rpaths_swift=($(otool -l $PACKAGES/mpv/build/mpv.app/Contents/MacOS/mpv | grep -A2 LC_RPATH | grep path | awk '{ print $2 }'))
-for f in "${rpaths_swift[@]}"; do
+#removing rpath definitions towards dev tools
+rpaths=($(otool -l $PACKAGES/mpv/build/mpv.app/Contents/MacOS/mpv | grep -A2 LC_RPATH | grep path | awk '{ print $2 }'))
+for f in "${rpaths[@]}"; do
   sudo install_name_tool -delete_rpath $f $PACKAGES/mpv/build/mpv.app/Contents/MacOS/mpv
 done
 
