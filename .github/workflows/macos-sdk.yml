@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-11
+    runs-on: macos-13
     steps:   
     - name: show swift
       run: |
@@ -41,11 +41,11 @@ jobs:
     
     - name: Check SDK
       run: |
-        echo "xcode sdks======="
-        ls /Applications/Xcode_12.5.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+        echo "Xcode_14.2 sdks======="
+        ls /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         echo "CommandLineTools sdks===="
         ls /Library/Developer/CommandLineTools/SDKs
         echo "XcodeDefault.xctoolchain===="
-        ls /Applications/Xcode_12.5.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+        ls /Applications/Xcode_14.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
         echo "show sdk version"
         xcrun --show-sdk-version
