@@ -11,6 +11,10 @@ jobs:
     container:
       image: archlinux/archlinux:base-devel
     steps:  
-      - name: group
+      - name: users
         run: |
           cat /etc/passwd
+          
+      - name: group
+        run: |
+          groups
