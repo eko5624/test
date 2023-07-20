@@ -13,4 +13,4 @@ jobs:
     steps:  
       - name: group
         run: |
-          groups __w
+          cat /etc/passwd
