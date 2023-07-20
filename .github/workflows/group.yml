@@ -1,4 +1,4 @@
-name: brotli
+name: group
 defaults:
   run:
     shell: bash
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  brotli:
+  build:
     runs-on: ubuntu-latest
     container:
       image: archlinux/archlinux:base-devel
