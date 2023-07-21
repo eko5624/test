@@ -1,4 +1,4 @@
-name: group
+name: path
 defaults:
   run:
     shell: bash
@@ -17,4 +17,4 @@ jobs:
           
       - name: github path
         run: |
-          echo "$GITHUB_PATH"
+          echo "$PATH"
