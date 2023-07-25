@@ -17,4 +17,8 @@ jobs:
           
       - name: github path
         run: |
+          echo "path env=============="
           echo "$PATH"
+          echo "/usr=============="
+          ls /usr
+          
