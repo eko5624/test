@@ -37,6 +37,7 @@ jobs:
           cd ~
           pwd
           find .
-          echo "root home============="
+          echo "github workspace env============="
+          echo "${{ github.workspace }}"
 
           
