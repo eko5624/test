@@ -23,9 +23,9 @@ jobs:
           git config --global fetch.prune true
           git config --global --add safe.directory $PWD
 
-      - name: users
+      - name: list all users
         run: |
-          cat /etc/passwd
+          cat /etc/passwd | cut -d: -f1
           
       - name: github path
         run: |
@@ -38,6 +38,5 @@ jobs:
           pwd
           find .
           echo "root home============="
-          cd /root/home
-          pwd
+
           
