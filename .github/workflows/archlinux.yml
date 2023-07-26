@@ -27,8 +27,8 @@ jobs:
         run: |
           cat /etc/passwd | cut -d: -f1
           
-      - name: checkout
-        uses: actions/checkout@main
+      #- name: checkout
+      #  uses: actions/checkout@main
         
       - name: working directory
         run: |
