@@ -33,4 +33,7 @@ jobs:
           echo "$PATH"
           echo "/usr=============="
           find /usr/local/ .
+          echo "home============="
+          cd ~
+          pwd
           
