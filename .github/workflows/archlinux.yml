@@ -38,6 +38,6 @@ jobs:
           pwd
           find .
           echo "root home============="
-          cd /home/root
+          cd /root/home
           pwd
           
