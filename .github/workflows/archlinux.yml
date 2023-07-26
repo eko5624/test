@@ -27,6 +27,16 @@ jobs:
         run: |
           cat /etc/passwd | cut -d: -f1
           
+      - name: checkout
+        uses: actions/checkout@main
+        
+      - name: working directory
+        run: |
+          echo "pwd=============="
+          pwd
+          echo "github workspace"
+          echo "${{ github.workspace }}"
+      
       - name: github path
         run: |
           echo "path env=============="
