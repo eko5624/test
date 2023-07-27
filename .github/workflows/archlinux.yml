@@ -26,6 +26,7 @@ jobs:
       - name: list all users
         run: |
           cat /etc/passwd | cut -d: -f1
+          cat /etc/makepkg.conf
           
 
         
