@@ -25,8 +25,14 @@ jobs:
 
       - name: list all users
         run: |
+          echo "列出所有用户============"
           cat /etc/passwd | cut -d: -f1
+          echo "显示当前用户名==========="
+          whoami
+          echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
+          echo "显示当前用户下的makepkg.conf=============="
+          cat ~/.makepkg.conf
           
 
         
