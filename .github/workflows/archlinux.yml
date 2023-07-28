@@ -32,7 +32,7 @@ jobs:
           echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
           echo "显示当前用户下的makepkg.conf=============="
-          cat ~/.makepkg.conf
+          cat $XDG_CONFIG_HOME/pacman/makepkg.conf
           
 
         
