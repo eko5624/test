@@ -32,6 +32,11 @@ jobs:
           echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
 
+      - name: working directory without checkout
+        run: |
+          echo "working directory=============="
+          pwd
+          
       - name: Checkout
         uses: actions/checkout@v3
         
