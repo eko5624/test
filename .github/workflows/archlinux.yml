@@ -40,6 +40,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
+      - name: list github/workspace
+        run: | 
+          find /github/workspace
+          
       - name: working directory
         run: |
           echo "working directory=============="
