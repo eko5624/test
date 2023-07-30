@@ -42,10 +42,6 @@ jobs:
           git clone https://github.com/eko5624/test
           cd test
           pwd
-        
-      - name: list github/workspace
-        run: | 
-          find /github/workspace
           
       - name: working directory
         run: |
