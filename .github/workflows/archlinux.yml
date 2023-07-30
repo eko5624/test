@@ -31,6 +31,9 @@ jobs:
           whoami
           echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
+
+      - name: Checkout
+        uses: actions/checkout@v3
         
       - name: working directory
         run: |
