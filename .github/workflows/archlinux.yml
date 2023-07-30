@@ -31,10 +31,6 @@ jobs:
           whoami
           echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
-          echo "显示当前用户下的makepkg.conf=============="
-          cat $XDG_CONFIG_HOME/pacman/makepkg.conf
-          
-
         
       - name: working directory
         run: |
@@ -55,6 +51,8 @@ jobs:
           cd ~
           pwd
           find .
+          echo "list /github=========="
+          find /github
           echo "github workspace env============="
           echo "${{ github.workspace }}"
 
