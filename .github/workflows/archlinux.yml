@@ -21,7 +21,7 @@ jobs:
           git config --global pull.rebase true
           git config --global rebase.autoStash true
           git config --global fetch.prune true
-          git config --global --add safe.directory /github/workspace
+          git config --global --add safe.directory $PWD
 
       - name: list all users
         run: |
