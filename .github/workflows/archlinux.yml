@@ -14,7 +14,7 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-          sudo pacman -Syu --noconfirm docker
+          sudo pacman -Syu --noconfirm docker p7zip
           sudo pacman -S --noconfirm --needed git mingw-w64-gcc cmake
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -40,6 +40,18 @@ jobs:
         run: |
           echo "显示当前路径=============="
           pwd
+          mkdir dir-sysusers
+          sudo cp -r /usr/lib/sysusers.d/* dir-sysusers
+          7z a dir-sysusers.7z dir-sysusers
+
+      - name: Upload
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dir-sysusers.7z
+          tag: dev
+          overwrite: true
+          file_glob: true
           
       - name: Checkout
         run: |
