@@ -32,7 +32,7 @@ jobs:
           echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
           echo "显示sysusers.d的内容================"
-          /etc/systemd/sysusers.d
+          cat /etc/systemd/sysusers.d
 
       - name: working directory without checkout
         run: |
