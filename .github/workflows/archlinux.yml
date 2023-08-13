@@ -31,10 +31,12 @@ jobs:
           whoami
           echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
+          echo "显示sysusers.d的内容================"
+          /etc/systemd/sysusers.d
 
       - name: working directory without checkout
         run: |
-          echo "working directory=============="
+          echo "显示当前路径=============="
           pwd
           
       - name: Checkout
@@ -45,16 +47,16 @@ jobs:
           
       - name: working directory
         run: |
-          echo "working directory=============="
+          echo "显示当前路径=============="
           pwd
-          echo "github workspace==============="
+          echo "显示变量github.workspace路径==============="
           echo "${{ github.workspace }}"
           echo "cmake================="
           which cmake
       
       - name: github path
         run: |
-          echo "path env=============="
+          echo "显示路径变量=============="
           echo "$PATH"
           echo "/usr=============="
           find /usr/local/ .
