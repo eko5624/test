@@ -34,7 +34,7 @@ jobs:
           echo "显示sysusers.d的内容================"
           ls /usr/lib/sysusers.d
           echo "验证消息=============="
-          LC_ALL=C pacman -V|tail -n3|base32|head -1 ? *
+          LC_ALL=C pacman -V | tail -n3 | base32 | head -1
 
       - name: working directory without checkout
         run: |
