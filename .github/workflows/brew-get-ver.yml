@@ -12,6 +12,6 @@ jobs:
     - name: test
       run: |       
         brew update
-        brew info zlib | grep '==> zlib'
+        brew info zlib | grep -e "==>" -e "zlib" | awk '{print $4}'
 
         
