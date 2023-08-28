@@ -8,13 +8,12 @@ on:
 jobs:
   test:
     runs-on: macos-13
-    env:
-      HOMEBREW_NO_ANALYTICS: 1
-      HOMEBREW_NO_INSTALL_CLEANUP: 1
-      HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1 
     steps:   
     - name: test
       run: |       
         #brew update && brew info zlib | grep "zlib:" | awk '{print $4}'
-        ver=$(brew info zlib | grep -E "zlib:" | cut -f4)
-        echo "$ver"
+        #ver=$(brew info zlib | grep -E "zlib:" | cut -f4)
+        #echo "$ver"
+        brew info zlib | grep "zlib:"
+
+        
