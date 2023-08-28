@@ -1,4 +1,4 @@
-name: brew
+name: brew-get-ver
 
 on:
   workflow_dispatch:
