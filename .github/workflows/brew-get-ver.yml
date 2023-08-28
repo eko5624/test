@@ -1,0 +1,19 @@
+name: brew
+
+on:
+  workflow_dispatch:
+  #schedule:
+  #  - cron: '0 0 * * MON'
+
+jobs:
+  test:
+    runs-on: macos-12
+    env:
+      HOMEBREW_NO_ANALYTICS: 1
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+      HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1 
+    steps:   
+    - name: test
+      run: |       
+        ver=$(brew update && brew info zlib | grep -E "^zlib:" | awk '{ print $3 }')
+        echo "$ver"
