@@ -15,5 +15,6 @@ jobs:
     steps:   
     - name: test
       run: |       
+        brew info zlib
         ver=$(brew update && brew info zlib | grep "zlib:" | awk '{ print $3 }')
         echo "$ver"
