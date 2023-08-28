@@ -14,7 +14,7 @@ jobs:
         #brew update && brew info zlib | grep "zlib:" | awk '{print $4}'
         #ver=$(brew info zlib | grep -E "zlib:" | cut -f4)
         #echo "$ver"
-        #brew info zlib | grep "zlib\:"
-        brew info zlib
+        brew info zlib | grep -e "zlib\:"
+        #brew info zlib
 
         
