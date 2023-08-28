@@ -11,6 +11,7 @@ jobs:
     steps:   
     - name: test
       run: |       
-        brew update && brew info zlib | grep "==> zlib" | awk '{print $4}'
+        brew update
+        brew info zlib | grep "==> zlib" | awk '{print $4}'
 
         
