@@ -1,19 +1,12 @@
 #!/bin/bash
 
-jsondata=$(curl -s https://github.com/eko5624/nginx-nosni/raw/master/old.json)
-# 定义关联数组
-#declare -A data
-
-# 将 JSON 内容解析为关联数组
-#eval $(echo data=$(cat old.json | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | join(" ")'))
-
+curl -OL https://github.com/eko5624/nginx-nosni/raw/master/old.json
 
 declare -A dict
 while IFS="=" read -r key value; do
     dict[$key]=$value
-done < <(echo $jsondata | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]')
+done < <(jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]' old.json)
 
-# 打印关联数组
-for key in "${!dict[@]}"; do
-  echo "$key: ${dict[$key]}"
-done
+# 示例
+echo "${dict[mpv]}"
+
