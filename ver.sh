@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -O https://github.com/eko5624/nginx-nosni/raw/master/old.json
+curl -OL https://github.com/eko5624/nginx-nosni/raw/master/old.json
 # 定义关联数组
 declare -A data
 
