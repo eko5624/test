@@ -6,3 +6,8 @@ declare -A data
 
 # 将 JSON 内容解析为关联数组
 eval $(echo data=$(echo $json_data | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | join(" ")'))
+
+# 打印关联数组
+for key in "${!data[@]}"; do
+  echo "$key: ${data[$key]}"
+done
