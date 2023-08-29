@@ -1,4 +1,4 @@
-name: Executable flag setting
+name: ver
 
 on: 
    workflow_dispatch:
