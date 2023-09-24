@@ -31,8 +31,6 @@ jobs:
           whoami
           echo "显示系统级makepkg.conf=============="
           cat /etc/makepkg.conf
-          echo "验证消息=============="
-          LC_ALL=C pacman -V | tail -n3 | base32 | head -1
           echo "makepkg=============="
           which makepkg
       - name: working directory without checkout
