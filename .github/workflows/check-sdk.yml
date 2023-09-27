@@ -7,19 +7,19 @@ on:
 
 jobs:
   test:
-    runs-on: macos-10.15
+    runs-on: macos-13
     #env:
       #SDKROOT: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
       #MACOS_SDK: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
       #SDK_PATH: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
       #SWIFT_FLAGS: "-target x86_64-apple-macosx10.14" 
     steps: 
-    - name: Switch to MacOSX 10.15 SDK
-      id: macossdk
-      run: |
-        sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
-        sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
-        sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+    #- name: Switch to MacOSX 10.15 SDK
+    #  id: macossdk
+    #  run: |
+    #    sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
+    #    sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+    #    sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
     #    curl -OL https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz
     #    tar -C $SDK_PATH -xf MacOSX10.14.sdk.tar.xz
     #    sudo rm -rf $SDK_PATH/MacOSX11.3.sdk
@@ -48,7 +48,7 @@ jobs:
     - name: Check
       run: |
         echo "xcode sdks===="
-        ls /Applications/Xcode_11.7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+        ls /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         echo "CommandLineTools sdks===="
         ls /Library/Developer/CommandLineTools/SDKs
         echo "show sdk path===="
