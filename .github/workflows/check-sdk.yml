@@ -40,10 +40,10 @@ jobs:
     #    sudo xcode-select --reset
     #    sudo xcode-select -s /Applications/Xcode_11.7.app/Contents/Developer   
    
-    - name: Switch to CLTs
-      run: |
-        sudo xcode-select --reset
-        sudo xcode-select --switch /Library/Developer/CommandLineTools/  
+    #- name: Switch to CLTs
+    #  run: |
+    #    sudo xcode-select --reset
+    #    sudo xcode-select --switch /Library/Developer/CommandLineTools/  
    
     - name: Check
       run: |
