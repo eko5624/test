@@ -27,12 +27,12 @@ jobs:
     - name: Install GCC With MCF Toolchain
       run: |
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
-        7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
-        cp /cygdrive/c/Windows/System32/cmd.exe /cygdrive/d/ucrt64/bin
+        7z x target-gcc-mcf*.7z -o/d && mv /d/target /d/ucrt64
+        cp /cygdrive/c/Windows/System32/cmd.exe /d/ucrt64/bin
 
     - name: Install vulkan
       run: |
-        export PATH=/cygdrive/d/ucrt64/bin:/usr/bin:/opt/bin
+        export PATH=/d/ucrt64/bin:/usr/bin:/opt/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
