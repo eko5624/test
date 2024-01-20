@@ -1,0 +1,24 @@
+name: cygwin
+defaults:
+  run:
+    shell: C:\cygwin\bin\bash.exe --noprofile --norc -o igncr -eo pipefail '{0}'
+on:
+  workflow_dispatch:
+  #schedule:
+  #- cron: '30 0 * * MON'
+    
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+    - name: Install cygwin
+      uses: cygwin/cygwin-install-action@master
+      with:
+        platform: x86_64
+        packages: cygwin-devel automake autoconf libtool make bash git
+
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: test
+      run: cat test 
