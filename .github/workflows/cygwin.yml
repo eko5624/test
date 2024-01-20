@@ -19,7 +19,7 @@ jobs:
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: automake libtool make cmake ninja git p7zip
+        packages: automake libtool make patch pkg-config git p7zip unzip
 
     - name: cygcheck
       run: cygcheck -c
@@ -29,13 +29,12 @@ jobs:
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
         7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
         cp /cygdrive/c/Windows/System32/cmd.exe /cygdrive/d/ucrt64/bin
-        cp /cygdrive/d/ucrt64/bin/mingw32-make.exe /cygdrive/d/ucrt64/bin/make.exe
         git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
 
     - name: Install vulkan
       run: |
         git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
-        export PATH=/usr/bin:/opt/bin:/cygdrive/d/ucrt64/bin
+        export PATH=/cygdrive/d/ucrt64/bin:/usr/bin:/usr/local/bin:/opt/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
