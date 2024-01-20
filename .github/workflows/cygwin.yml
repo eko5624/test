@@ -18,9 +18,9 @@ jobs:
         install-dir: C:\cygwin
         packages: automake libtool make patch pkg-config git p7zip unzip
         
-    - name: Setup git
-      shell: cmd
-      run: git config --global core.autocrlf input
+    #- name: Setup git
+    #  shell: cmd
+    #  run: git config --global core.autocrlf input
 
     #- name: Setup git config
     #  run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
