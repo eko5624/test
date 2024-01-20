@@ -47,6 +47,7 @@ jobs:
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
+        git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
         git clone https://github.com/KhronosGroup/Vulkan-Headers
         git clone https://github.com/KhronosGroup/Vulkan-Loader
         cd Vulkan-Headers
