@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
+    - name: Checkout
+      uses: actions/checkout@main
+      
     - name: Install cygwin
       uses: cygwin/cygwin-install-action@master
       with:
@@ -24,9 +27,6 @@ jobs:
 
     #- name: Setup git config
     #  run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
-      
-    - name: Checkout
-      uses: actions/checkout@main
 
     - name: cygcheck
       run: cygcheck -c
