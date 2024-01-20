@@ -23,7 +23,7 @@ jobs:
       run: git config --global core.autocrlf input
 
     - name: Setup git config
-      run: git config --global --add safe.directory $PWD
+      run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
       
     - name: Checkout
       uses: actions/checkout@main
@@ -40,7 +40,9 @@ jobs:
 
     - name: Install vulkan
       run: |
-        git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
+        export CC="gcc"
+        export CXX="g++"
+        export CHOST="x86_64-pc-cygwin"
         export PATH=/cygdrive/d/ucrt64/bin:/usr/bin:/usr/local/bin:/opt/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
