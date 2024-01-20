@@ -15,6 +15,7 @@ jobs:
       uses: cygwin/cygwin-install-action@master
       with:
         platform: x86_64
+        install-dir: C:\cygwin
         packages: cygwin-devel automake autoconf libtool make bash git
 
     - name: Checkout
