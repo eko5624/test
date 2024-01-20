@@ -19,7 +19,7 @@ jobs:
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: p7zip
+        packages: git p7zip
 
     - name: cygcheck
       run: cygcheck -c
@@ -29,3 +29,38 @@ jobs:
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
         7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
         cp /cygdrive/c/Windows/System32/cmd.exe /cygdrive/d/ucrt64/bin
+
+    - name: Install vulkan
+      run: |
+        export PATH=/cygdrive/d/ucrt64/bin:usr/bin:/opt/bin
+        export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
+        export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
+        export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
+        git clone https://github.com/KhronosGroup/Vulkan-Headers
+        git clone https://github.com/KhronosGroup/Vulkan-Loader
+        cd Vulkan-Headers
+        rm -rf build && mkdir build && cd build
+        cmake .. \
+          -G "Ninja" \
+          -DCMAKE_INSTALL_PREFIX=/opt \
+          -DCMAKE_BUILD_TYPE=Release
+        cmake --install .
+        cd ../..
+      
+        cd Vulkan-Loader
+        patch -p1 -i $srcdir/vulkan-0001-cross-compile-static-linking-hacks.patch
+        rm -rf build && mkdir build && cd build
+        cmake .. \
+          -G "Ninja" \
+          -DCMAKE_INSTALL_PREFIX=/opt \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DVULKAN_HEADERS_INSTALL_DIR="/opt" \
+          -DBUILD_STATIC_LOADER=ON \
+          -DBUILD_TESTS=OFF \
+          -DUSE_MASM=OFF \
+          -DENABLE_WERROR=OFF 
+        cmake --build .
+        cmake --install .
+        mkdir -p /opt/lib/pkgconfig
+        cp loader/libvulkan.a /opt/lib
+        cp loader/vulkan_own.pc /opt/lib/pkgconfig/vulkan.pc
