@@ -34,7 +34,7 @@ jobs:
     - name: Install vulkan
       run: |
         git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
-        export PATH=/cygdrive/d/ucrt64/bin:/usr/bin:/opt/bin
+        export PATH=/usr/bin:/opt/bin:/cygdrive/d/ucrt64/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
