@@ -32,7 +32,7 @@ jobs:
 
     - name: Install vulkan
       run: |
-        export PATH=/cygdrive/d/ucrt64/bin:usr/bin:/opt/bin
+        export PATH=/cygdrive/d/ucrt64/bin:/usr/bin:/opt/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
