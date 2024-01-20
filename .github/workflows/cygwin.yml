@@ -19,7 +19,7 @@ jobs:
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: git p7zip
+        packages: automake libtool make git p7zip
 
     - name: cygcheck
       run: cygcheck -c
