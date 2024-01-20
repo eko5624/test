@@ -25,4 +25,4 @@ jobs:
       run: |
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
         7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
-        #cp /cygdrive/c/Windows/System32/cmd.exe /d/ucrt64/bin
+        cp /cygdrive/c/Windows/System32/cmd.exe /cygdrive/d/ucrt64/bin
