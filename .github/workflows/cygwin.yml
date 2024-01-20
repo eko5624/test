@@ -21,6 +21,9 @@ jobs:
         install-dir: C:\cygwin
         packages: p7zip
 
+    - name: cygcheck
+      run: cygcheck -c
+      
     - name: Install GCC With MCF Toolchain
       run: |
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
