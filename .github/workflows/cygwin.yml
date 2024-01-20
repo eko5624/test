@@ -22,8 +22,8 @@ jobs:
       shell: cmd
       run: git config --global core.autocrlf input
 
-    - name: Setup git config
-      run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
+    #- name: Setup git config
+    #  run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
       
     - name: Checkout
       uses: actions/checkout@main
