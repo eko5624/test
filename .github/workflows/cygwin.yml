@@ -11,15 +11,15 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
+    - name: Checkout
+      uses: actions/checkout@main
+      
     - name: Install cygwin
       uses: cygwin/cygwin-install-action@master
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: cygwin-devel automake autoconf libtool make bash git
-
-    - name: Checkout
-      uses: actions/checkout@main
+        packages: automake autoconf libtool make bash git
 
     - name: test
       run: cat test 
