@@ -32,7 +32,7 @@ jobs:
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: automake libtool make pkg-config git patch p7zip unzip
+        packages: automake libtool make cmake ninja pkg-config git patch p7zip unzip
         add-to-path: true
     - name: Store package cache
       uses: actions/cache/save@main
@@ -49,6 +49,8 @@ jobs:
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
         7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
         cp /cygdrive/c/Windows/System32/cmd.exe /cygdrive/d/ucrt64/bin
+        rm /cygdrive/d/ucrt64/bin/cmake.exe
+        rm /cygdrive/d/ucrt64/bin/ninja.exe
         
     - name: Install vulkan
       run: |
