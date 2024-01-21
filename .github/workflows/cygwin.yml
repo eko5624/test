@@ -1,7 +1,7 @@
 name: cygwin
-defaults:
-  run:
-    shell: C:\cygwin\bin\bash.exe --noprofile --norc -o igncr -eo pipefail '{0}'
+#defaults:
+#  run:
+#    shell: C:\cygwin\bin\bash.exe --noprofile --norc -o igncr -eo pipefail '{0}'
 on:
   workflow_dispatch:
   #schedule:
@@ -10,6 +10,11 @@ on:
 jobs:
   build:
     runs-on: windows-2022
+    env:
+      SHELLOPTS: igncr
+    defaults:
+      run:
+        shell: C:\cygwin\bin\bash.exe -eo pipefail '{0}'
     steps:
     - name: Configure Git for Windows
       shell: cmd
@@ -34,8 +39,8 @@ jobs:
       with:
         key: cygwin-packages-${{ github.run_id }}
         path: C:\cygwin-packages      
-    - name: Setup git
-      run: git config --global --add safe.directory /cygdrive/d/a/test/test # workaround for #3408
+    #- name: Setup git
+    #  run: git config --global --add safe.directory /cygdrive/d/a/test/test # workaround for #3408
     - name: cygcheck
       run: cygcheck -c
       
