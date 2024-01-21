@@ -38,6 +38,7 @@ jobs:
       shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
       run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
     - name: cygcheck
+      shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
       run: cygcheck -c
       
     - name: Install GCC With MCF Toolchain
