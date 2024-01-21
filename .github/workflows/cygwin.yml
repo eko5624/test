@@ -32,7 +32,7 @@ jobs:
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: automake libtool make pkg-config gcc-core git patch p7zip unzip
+        packages: automake libtool make pkg-config git patch p7zip unzip
         add-to-path: true
     - name: Store package cache
       uses: actions/cache/save@main
@@ -49,14 +49,14 @@ jobs:
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
         7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
         cp /cygdrive/c/Windows/System32/cmd.exe /cygdrive/d/ucrt64/bin
-
-
+        
     - name: Install vulkan
       run: |
         export PATH=/usr/bin:/usr/local/bin:$(cygpath ${SYSTEMROOT})/system32:/opt/bin:/cygdrive/d/ucrt64/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
+        gcc -v
         git clone https://github.com/KhronosGroup/Vulkan-Headers
         git clone https://github.com/KhronosGroup/Vulkan-Loader
         cd Vulkan-Headers
