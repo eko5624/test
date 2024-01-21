@@ -65,11 +65,8 @@ jobs:
         rm -rf build && mkdir build && cd build
         cmake .. \
           -G "Ninja" \
-          -DCMAKE_C_COMPILER=gcc \
-          -DCMAKE_CXX_COMPILER=g++ \
-          -DCMAKE_RC_COMPILER=windres \
-          -DCMAKE_ASM_COMPILER=as \
-          -DCMAKE_RANLIB=ranlib \
+          -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc \
+          -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++ \
           -DCMAKE_INSTALL_PREFIX=/opt \
           -DCMAKE_BUILD_TYPE=Release
         cmake --install .
