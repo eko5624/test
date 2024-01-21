@@ -40,9 +40,10 @@ jobs:
 
     - name: Install vulkan
       run: |
-        export CC="gcc"
-        export CXX="g++"
-        export CHOST="x86_64-pc-cygwin"
+        editrights -a SeAssignPrimaryTokenPrivilege -u cyg_server
+        editrights -a SeCreateTokenPrivilege -u cyg_server 
+        editrights -a SeTcbPrivilege -u cyg_server 
+        editrights -a SeServiceLogonRight -u cyg_server 
         export PATH=/usr/bin:/opt/bin:/cygdrive/d/ucrt64/bin:$PATH
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
