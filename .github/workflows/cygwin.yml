@@ -21,10 +21,10 @@ jobs:
         install-dir: C:\cygwin
         packages: automake libtool make pkg-config gcc-core git patch p7zip unzip
         
-    #- name: Setup git
-    #  shell: cmd
-    #  run: git config --global core.autocrlf input
-
+    - name: Setup git
+      shell: cmd
+      run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
+           
     #- name: Setup git config
     #  run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
 
@@ -48,7 +48,6 @@ jobs:
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
         chmod 777 /cygdrive/d/ucrt64/bin
-        git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
         git clone https://github.com/KhronosGroup/Vulkan-Headers
         git clone https://github.com/KhronosGroup/Vulkan-Loader
         cd Vulkan-Headers
