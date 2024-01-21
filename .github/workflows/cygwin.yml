@@ -12,6 +12,7 @@ jobs:
     runs-on: windows-2022
     steps:
     - name: Configure Git for Windows
+      shell: cmd
       run: git config --global core.autocrlf input
     - name: Checkout
       uses: actions/checkout@main
@@ -41,7 +42,7 @@ jobs:
       
     - name: Install GCC With MCF Toolchain
       shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
-      run: |
+      run: >-
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
         7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
         cp /cygdrive/c/Windows/System32/cmd.exe /cygdrive/d/ucrt64/bin
@@ -49,7 +50,7 @@ jobs:
 
     - name: Install vulkan
       shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
-      run: | 
+      run: >- 
         export PATH=/usr/bin:/usr/local/bin:/opt/bin:/cygdrive/d/ucrt64/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
