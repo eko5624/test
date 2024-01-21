@@ -1,7 +1,7 @@
 name: cygwin
-#defaults:
-#  run:
-#    shell: C:\cygwin\bin\bash.exe --noprofile --norc -o igncr -eo pipefail '{0}'
+defaults:
+  run:
+    shell: C:\cygwin\bin\bash.exe --noprofile --norc -o igncr -eo pipefail '{0}'
 on:
   workflow_dispatch:
   #schedule:
@@ -28,21 +28,18 @@ jobs:
         platform: x86_64
         install-dir: C:\cygwin
         packages: automake libtool make pkg-config gcc-core git patch p7zip unzip
-        add-to-path: false
+        add-to-path: true
     - name: Store package cache
       uses: actions/cache/save@main
       with:
         key: cygwin-packages-${{ github.run_id }}
         path: C:\cygwin-packages      
     - name: Setup git
-      shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
       run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
     - name: cygcheck
-      shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
       run: cygcheck -c
       
     - name: Install GCC With MCF Toolchain
-      shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
       run: >-
         curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/target-gcc-mcf-13.2.1-20231227-x64-ucrt.7z
         7z x target-gcc-mcf*.7z -o/cygdrive/d && mv /cygdrive/d/target /cygdrive/d/ucrt64
@@ -50,7 +47,6 @@ jobs:
 
 
     - name: Install vulkan
-      shell: C:\cygwin\bin\bash.exe --noprofile --norc -e -o pipefail -o igncr {0}
       run: >- 
         export PATH=/usr/bin:/usr/local/bin:/opt/bin:/cygdrive/d/ucrt64/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
