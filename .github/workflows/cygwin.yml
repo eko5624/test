@@ -35,7 +35,7 @@ jobs:
         key: cygwin-packages-${{ github.run_id }}
         path: C:\cygwin-packages      
     - name: Setup git
-      run: git config --global --add safe.directory "$(cygpath -u "$GITHUB_WORKSPACE")" # workaround for #3408
+      run: git config --global --add safe.directory /cygdrive/d/a/test/test # workaround for #3408
     - name: cygcheck
       run: cygcheck -c
       
