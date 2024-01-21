@@ -43,7 +43,7 @@ jobs:
         export CC="gcc"
         export CXX="g++"
         export CHOST="x86_64-pc-cygwin"
-        export PATH=/cygdrive/d/ucrt64/bin:/usr/bin:/usr/local/bin:/opt/bin
+        export PATH=/cygdrive/d/ucrt64/bin:/usr/bin:/usr/local/bin:/opt/bin:$PATH
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
         export CXXFLAGS="${CXXFLAGS} -D__STDC_FORMAT_MACROS -fpermissive"
