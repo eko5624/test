@@ -32,7 +32,7 @@ jobs:
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: automake libtool make cmake ninja pkg-config git patch p7zip unzip
+        packages: automake libtool make cmake ninja pkg-config windows-default-manifest git patch p7zip unzip
         add-to-path: true
     - name: Store package cache
       uses: actions/cache/save@main
