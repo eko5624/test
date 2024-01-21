@@ -19,7 +19,7 @@ jobs:
       with:
         platform: x86_64
         install-dir: C:\cygwin
-        packages: automake libtool make patch pkg-config git p7zip unzip
+        packages: automake libtool make pkg-config gcc-core git patch p7zip unzip
         
     #- name: Setup git
     #  shell: cmd
