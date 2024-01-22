@@ -54,6 +54,7 @@ jobs:
         
     - name: Install vulkan
       run: |
+        export CHOST="x86_64-w64-mingw32"
         export CC="x86_64-w64-mingw32-gcc"
         export CXX="x86_64-w64-mingw32-g++"
         export PKG_CONFIG_LIBDIR="/opt/lib/pkgconfig"
