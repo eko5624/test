@@ -54,6 +54,12 @@ jobs:
         
     - name: Install vulkan
       run: |
+        export CC="x86_64-w64-mingw32-gcc"
+        export CXX="x86_64-w64-mingw32-g++"
+        export C_INCLUDE_PATH="/opt/include"
+        export CPLUS_INCLUDE_PATH="/opt/include"
+        export LIBRARY_PATH="/opt/lib"
+        export PKG_CONFIG_PATH="/opt/lib/pkgconfig"
         export PATH=/usr/bin:/usr/local/bin:$(cygpath ${SYSTEMROOT})/system32:/opt/bin:/cygdrive/d/ucrt64/bin
         export CFLAGS="${CFLAGS} -D__STDC_FORMAT_MACROS -DSTRSAFE_NO_DEPRECATE -Dparse_number=cjson_parse_number"
         export CPPFLAGS="${CPPFLAGS} -D__STDC_FORMAT_MACROS"
