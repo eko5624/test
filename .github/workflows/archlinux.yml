@@ -31,9 +31,14 @@ jobs:
           echo "x86_64-w64-mingw32-gcc的完整路径"
           realpath v3/bin/x86_64-w64-mingw32-gcc
           echo "获取 GCC-v3 march"
-          /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -v
+          if [[ /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64 | grep -q "__AVX" ]]; then
+            echo "$?"
+            echo "GCC_ARCH_HAS_AVX"
+          done  
           echo "获取 GCC-x86_64 march"
-          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -v
+          if [[ /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64 | grep -q "__AVX" ]]; then
+            echo  "$?"
+          done
           
       - name: list all users
         run: |
