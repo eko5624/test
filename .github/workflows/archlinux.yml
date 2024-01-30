@@ -23,6 +23,10 @@ jobs:
           git config --global fetch.prune true
           git config --global --add safe.directory /github/workspace
 
+      - name: 获取 GCC 预定义宏
+        run: |
+          gcc -dM -E - -march=x86-64
+
       - name: list all users
         run: |
           echo "列出所有用户============"
