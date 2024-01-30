@@ -33,7 +33,7 @@ jobs:
           echo "获取 GCC-v3 预定义宏"
           /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
           echo "获取 GCC-x86_64 预定义宏"
-          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
+          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64-v3
           
       - name: list all users
         run: |
