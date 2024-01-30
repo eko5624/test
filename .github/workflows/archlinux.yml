@@ -14,17 +14,24 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo echo -e "[multilib]\nInclude = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-          sudo pacman -Syu --noconfirm docker p7zip
+          sudo pacman -Syu --noconfirm docker curl p7zip
           sudo pacman -S --noconfirm --needed git mingw-w64-gcc cmake
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global pull.rebase true
           git config --global rebase.autoStash true
           git config --global fetch.prune true
-          git config --global --add safe.directory /github/workspace
+          git config --global --add safe.directory ${{ github.workspace }}
 
+      - name: Setup llvm-clang-x86_64_v3 Toolchain
+        run: |
+            curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/llvm-clang-latest-ucrt-x86_64_v3.7z
+            7z x llvm*.7z
+            rm llvm*.7z
+          fi
       - name: 获取 GCC 预定义宏
         run: |
+          export PATH=${{ github.workspace }}/cross/bin:$PATH
           x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
 
       - name: list all users
