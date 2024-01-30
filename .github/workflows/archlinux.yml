@@ -15,8 +15,13 @@ jobs:
       - name: Setup llvm-clang-x86_64_v3 Toolchain
         run: |
           curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/llvm-clang-latest-ucrt-x86_64_v3.7z
-          7z x llvm*.7z
-          rm llvm*.7z
+          curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/llvm-clang-latest-ucrt-x86_64.7z
+          7z x llvm-clang-latest-ucrt-x86_64_v3.7z
+          rm llvm-clang-latest-ucrt-x86_64_v3.7z
+          mv cross v3
+          7z x llvm-clang-latest-ucrt-x86_64.7z
+          rm llvm-clang-latest-ucrt-x86_64.7z
+          mv cross x86-64
       - name: 获取 GCC 预定义宏
         run: |
           echo "显示github.workspace"
@@ -24,11 +29,12 @@ jobs:
           echo "显示当前路径"
           pwd
           echo "x86_64-w64-mingw32-gcc的完整路径"
-          realpath cross/bin/x86_64-w64-mingw32-gcc
-          echo "获取 GCC 预定义宏"
-          export PATH=/__w/test/test/cross/bin:$PATH
-          x86_64-w64-mingw32-gcc -dM -E - -march=x86-64-v3
-
+          realpath v3/bin/x86_64-w64-mingw32-gcc
+          echo "获取 GCC-v3 预定义宏"
+          /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64-v3
+          echo "获取 GCC-x86_64 预定义宏"
+          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
+          
       - name: list all users
         run: |
           echo "列出所有用户============"
