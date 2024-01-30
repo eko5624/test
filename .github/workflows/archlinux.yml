@@ -22,7 +22,7 @@ jobs:
           7z x llvm-clang-latest-ucrt-x86_64.7z
           rm llvm-clang-latest-ucrt-x86_64.7z
           mv cross x86-64
-      - name: 获取 GCC 预定义宏
+      - name: 获取 GCC march
         run: |
           echo "显示github.workspace"
           echo "${{ github.workspace }}"
@@ -30,10 +30,10 @@ jobs:
           pwd
           echo "x86_64-w64-mingw32-gcc的完整路径"
           realpath v3/bin/x86_64-w64-mingw32-gcc
-          echo "获取 GCC-v3 预定义宏"
-          /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
-          echo "获取 GCC-x86_64 预定义宏"
-          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64-v3
+          echo "获取 GCC-v3 march"
+          /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -v
+          echo "获取 GCC-x86_64 march"
+          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -v
           
       - name: list all users
         run: |
