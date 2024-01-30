@@ -36,7 +36,8 @@ jobs:
           echo "x86_64-w64-mingw32-gcc的完整路径"
           realpath cross/bin/x86_64-w64-mingw32-gcc
           echo "获取 GCC 预定义宏"
-          cross/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64-v3
+          export PATH=/__w/test/test/cross/bin:$PATH
+          x86_64-w64-mingw32-gcc -dM -E - -march=x86-64-v3
 
       - name: list all users
         run: |
