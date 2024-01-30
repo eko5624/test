@@ -25,10 +25,9 @@ jobs:
 
       - name: Setup llvm-clang-x86_64_v3 Toolchain
         run: |
-            curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/llvm-clang-latest-ucrt-x86_64_v3.7z
-            7z x llvm*.7z
-            rm llvm*.7z
-          fi
+          curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/llvm-clang-latest-ucrt-x86_64_v3.7z
+          7z x llvm*.7z
+          rm llvm*.7z
       - name: 获取 GCC 预定义宏
         run: |
           export PATH=${{ github.workspace }}/cross/bin:$PATH
