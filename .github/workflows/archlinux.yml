@@ -25,7 +25,7 @@ jobs:
 
       - name: 获取 GCC 预定义宏
         run: |
-          gcc -dM -E - -march=x86-64
+          x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
 
       - name: list all users
         run: |
