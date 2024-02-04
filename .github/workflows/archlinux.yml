@@ -16,12 +16,40 @@ jobs:
         run: |
           curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/llvm-clang-latest-ucrt-x86_64_v3.7z
           curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/llvm-clang-latest-ucrt-x86_64.7z
+          curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/gcc-mcf-latest-ucrt-x86_64_v3.7z
+          curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/gcc-mcf-latest-ucrt-x86_64.7z
           7z x llvm-clang-latest-ucrt-x86_64_v3.7z
           rm llvm-clang-latest-ucrt-x86_64_v3.7z
-          mv cross v3
+          mv cross clang-v3
           7z x llvm-clang-latest-ucrt-x86_64.7z
           rm llvm-clang-latest-ucrt-x86_64.7z
-          mv cross x86-64
+          mv cross clang
+          7z x gcc-mcf-latest-ucrt-x86_64_v3.7z
+          rm gcc-mcf-latest-ucrt-x86_64_v3.7z
+          mv cross gcc-v3
+          7z x gcc-mcf-latest-ucrt-x86_64.7z
+          rm gcc-mcf-latest-ucrt-x86_64.7z
+          mv cross gcc          
+      - name: 获取 CLANG march
+        run: |
+          echo "显示github.workspace"
+          echo "${{ github.workspace }}"
+          echo "显示当前路径"
+          pwd
+          echo "x86_64-w64-mingw32-gcc的完整路径"
+          realpath clang-v3/bin/x86_64-w64-mingw32-gcc
+          echo "判断clang-x86_64-v3预定义宏是否包含AVX"
+          if echo | /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64 | grep -q "__AVX"; then
+            echo "$?"
+            echo "GCC_ARCH_HAS_AVX"
+          fi
+          echo "获取clang-x86_64预定义宏"
+          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
+          echo "判断GCC-x86_64预定义宏是否包含AVX"
+          if echo | /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - | grep -q "__AVX"; then
+            echo  "$?"
+          fi
+
       - name: 获取 GCC march
         run: |
           echo "显示github.workspace"
@@ -29,18 +57,20 @@ jobs:
           echo "显示当前路径"
           pwd
           echo "x86_64-w64-mingw32-gcc的完整路径"
-          realpath v3/bin/x86_64-w64-mingw32-gcc
-          echo "判断GCC-x86_64-v3预定义宏是否包含AVX"
-          if echo | /__w/test/test/v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64 | grep -q "__AVX"; then
+          realpath gcc-v3/bin/x86_64-w64-mingw32-gcc
+          echo "判断gcc-x86_64-v3预定义宏是否包含AVX"
+          if echo | /__w/test/test/gcc-v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64 | grep -q "__AVX"; then
             echo "$?"
             echo "GCC_ARCH_HAS_AVX"
           fi
-          echo "获取GCC-x86_64预定义宏"
-          /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
-          echo "判断GCC-x86_64预定义宏是否包含AVX"
-          if echo | /__w/test/test/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - | grep -q "__AVX"; then
+          echo "获取gcc-x86_64预定义宏"
+          /__w/test/test/gcc/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
+          echo "判断gcc-x86_64预定义宏是否包含AVX"
+          if echo | /__w/test/gcc/x86-64/bin/x86_64-w64-mingw32-gcc -dM -E - | grep -q "__AVX"; then
             echo  "$?"
           fi
+          echo "显示x86_64-w64-mingw32-gcc -v"
+          "${{ github.workspace }}"/gcc-v3/bin/x86_64-w64-mingw32-gcc -v          
           
       - name: list all users
         run: |
