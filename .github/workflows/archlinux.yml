@@ -58,19 +58,12 @@ jobs:
           pwd
           echo "x86_64-w64-mingw32-gcc的完整路径"
           realpath gcc-v3/bin/x86_64-w64-mingw32-gcc
-          echo "判断gcc-x86_64-v3预定义宏是否包含AVX"
-          if echo | /__w/test/test/gcc-v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64 | grep -q "__AVX"; then
-            echo "$?"
-            echo "GCC_ARCH_HAS_AVX"
-          fi
+          echo "获取gcc-x86_64-v3预定义宏"
+          /__w/test/test/gcc-v3/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
           echo "获取gcc-x86_64预定义宏"
           /__w/test/test/gcc/bin/x86_64-w64-mingw32-gcc -dM -E - -march=x86-64
-          echo "判断gcc-x86_64预定义宏是否包含AVX"
-          if echo | /__w/test/test/gcc/bin/x86_64-w64-mingw32-gcc -dM -E - | grep -q "__AVX"; then
-            echo  "$?"
-          fi
           echo "显示x86_64-w64-mingw32-gcc -v"
-          "${{ github.workspace }}"/gcc-v3/bin/x86_64-w64-mingw32-gcc -v          
+          /__w/test/test/gcc-v3/bin/x86_64-w64-mingw32-gcc -v          
           
       - name: list all users
         run: |
