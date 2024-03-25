@@ -9,15 +9,15 @@ jobs:
   test:
     runs-on: macos-13
     #env:
-      #SDKROOT: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
-      #MACOS_SDK: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-      #SDK_PATH: "/Applications/Xcode_10.3.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
-      #SWIFT_FLAGS: "-target x86_64-apple-macosx10.14" 
+    #  SDKROOT: "/Applications/Xcode_15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"    
+    #  MACOS_SDK: "/Applications/Xcode_15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+    #  SDK_PATH: "/Applications/Xcode_15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
+    #  SWIFT_FLAGS: "-target x86_64-apple-macosx11" 
     steps: 
     #- name: Switch to MacOSX 10.15 SDK
     #  id: macossdk
     #  run: |
-    #    sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk
+    #    sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
     #    sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
     #    sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
     #    curl -OL https://github.com/phracker/MacOSX-SDKs/releases/download/11.3/MacOSX10.14.sdk.tar.xz
@@ -34,11 +34,11 @@ jobs:
     #    curl -ksJLO https://download.swift.org/swift-4.2.4-release/xcode/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-osx.pkg
     #    sudo installer -pkg swift-4.2.4-RELEASE-osx.pkg -target /
   
-    #- name: Switch to Xcode 11.7
-    #  id: xcode117
-    #  run: |
-    #    sudo xcode-select --reset
-    #    sudo xcode-select -s /Applications/Xcode_11.7.app/Contents/Developer   
+    - name: Switch to Xcode 15.2
+      id: xcode152
+      run: |
+        sudo xcode-select --reset
+        sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer   
    
     #- name: Switch to CLTs
     #  run: |
@@ -47,19 +47,19 @@ jobs:
    
     - name: Check
       run: |
-        echo "xcode sdks===="
-        ls /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+        echo "Xcode_15.2 sdks===="
+        ls /Applications/Xcode_15.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         echo "CommandLineTools sdks===="
         ls /Library/Developer/CommandLineTools/SDKs
         echo "show sdk path===="
         sudo xcrun --sdk macosx --show-sdk-path
+        echo "show MACOS_SDK_VERSION"
+        sudo xcrun --sdk macosx -show-sdk-version
         echo "toolchain swift version===="
         sudo xcrun --toolchain swift swift --version
         #export TOOLCHAINS=org.swift.42420190329a
         #echo "show org.swift.42420190329a version===="
         #sudo xcrun --toolchain swift swift --version
-        echo "show MACOS_SDK_VERSION"
-        sudo xcrun --sdk macosx -show-sdk-version
         echo "show clang path===="
         sudo xcrun --find clang
         echo "usr/bin/clang version====" 
