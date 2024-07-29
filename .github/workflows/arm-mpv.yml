@@ -1,4 +1,4 @@
-name: arm-mpv
+name: luajit
 
 on:
   #schedule:
@@ -8,13 +8,11 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-13
     steps:
     - name: Checkout
       uses: actions/checkout@main
 
     - name: Test mpv
       run: |
-        curl -OL https://github.com/eko5624/mpv-mac/releases/download/2024-07-25/mpv-arm64-git-cb75ecf19f.zip
-        unzip mpv*.zip
-        ./mpv/mpv.app/Contents/MacOS/mpv
+        brew list
