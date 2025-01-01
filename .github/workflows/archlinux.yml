@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: pkgconf
         run: |
-          pkgconf -v
+          pkgconf -version
       - name: 获取 CLANG march
         run: |
           echo "显示github.workspace"
