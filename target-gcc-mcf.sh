@@ -52,9 +52,12 @@ git clone https://github.com/mingw-w64/mingw-w64.git --branch master
 #mcfgthread
 git clone https://github.com/lhmouse/mcfgthread.git --branch master
 
+wget -c -O mcfgthread-1.9-ga.2 https://github.com/lhmouse/mcfgthread/archive/refs/tags/v1.9-ga.2.tar.gz 2>/dev/null >/dev/null
+tar xzf mcfgthread-1.9-ga.2 2>/dev/null >/dev/null
+
 echo "building mcfgthread"
 echo "======================="
-cd $M_SOURCE/mcfgthread
+cd $M_SOURCE/mcfgthread-1.9-ga.2
 meson setup build \
   --prefix=$M_TARGET \
   --cross-file=$TOP_DIR/cross.meson \
