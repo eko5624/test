@@ -1,0 +1,27 @@
+name: mcfgthread
+defaults:
+  run:
+    shell: bash
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://ghcr.io/eko5624/archlinux:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        
+      - name: Setup Toolchain
+        run: |
+          curl -OL https://github.com/${{ github.repository }}/releases/download/toolchain/cross-gcc-mcf-latest-ucrt-x86_64.tar.xz
+          tar -xvf cross-gcc-mcf*.tar.xz 2>/dev/null >/dev/null
+          rm cross-gcc-mcf*.tar.xz
+      - name: Building mcf
+        run: |
+          if [[ ! "$(ls target/bin)" ]]; then
+            chmod +x ./target-gcc-mcf.sh
+            ./target-gcc-mcf.sh
+          fi
