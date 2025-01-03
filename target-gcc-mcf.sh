@@ -237,12 +237,12 @@ make install
 
 echo "building mcfgthread"
 echo "======================="
+LDFLAGS+=' -Wl,--allow-multiple-definition'"
 cd $M_SOURCE/mcfgthread
 meson setup build \
   --prefix=$M_TARGET \
   --cross-file=$TOP_DIR/cross.meson \
   --buildtype=release \
-  -Doptimization=1 \
   -Dtest=false
 meson compile -C build
 meson install -C build
