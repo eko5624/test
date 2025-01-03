@@ -1,14 +1,13 @@
-#!/bin/bash
-
-declare -A ver_array
-
-json_file=$(curl -s "https://raw.githubusercontent.com/eko5624/nginx-nosni/master/old.json")
-keys_content=$(jq -r '. | keys | .[]' "$json_file")
-while read -r key; do
-  value=$(jq -r ".[$key]" "$json_file")
-  ver_array[$key]=$value
-done <<< "$keys_content"
-
-VER_BINUTILS=${ver_array[binutils]}
-VER_GCC=${ver_array[GCC]}
-echo $VER_BINUTILS $VER_GCC
+VER_LLVM=19.1.6
+VER_BINUTILS=2.43.1
+VER_GCC=14.2.0
+VER_GMP=6.3.0
+VER_MPFR=4.2.1
+VER_MPC=1.3.1
+VER_ISL=0.24
+VER_MAKE=4.4.1
+VER_CMAKE=3.31.3
+VER_NINJA=1.12.1
+VER_NASM=2.16.03
+VER_YASM=1.3.0
+VER_PKGCONF=2.3.0
