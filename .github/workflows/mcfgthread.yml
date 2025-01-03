@@ -16,7 +16,7 @@ jobs:
         
       - name: Setup Toolchain
         run: |
-          curl -OL https://github.com/${{ github.repository }}/releases/download/toolchain/cross-gcc-mcf-latest-ucrt-x86_64.tar.xz
+          curl -OL https://github.com/eko5624/toolchain/releases/download/toolchain/cross-gcc-mcf-latest-ucrt-x86_64.tar.xz
           tar -xvf cross-gcc-mcf*.tar.xz 2>/dev/null >/dev/null
           rm cross-gcc-mcf*.tar.xz
       - name: Building mcf
