@@ -52,6 +52,17 @@ git clone https://github.com/mingw-w64/mingw-w64.git --branch master
 #mcfgthread
 git clone https://github.com/lhmouse/mcfgthread.git --branch master
 
+echo "building mcfgthread"
+echo "======================="
+cd $M_SOURCE/mcfgthread
+meson setup build \
+  --prefix=$M_TARGET \
+  --cross-file=$TOP_DIR/cross.meson \
+  -Doptimization=1
+meson compile -C build
+meson install -C build
+rm -rf $M_TARGET/lib/pkgconfig
+
 echo "building gmp"
 echo "======================="
 cd $M_BUILD
@@ -234,18 +245,6 @@ $M_SOURCE/mingw-w64/mingw-w64-libraries/winpthreads/configure \
   --enable-shared
 make -j$MJOBS
 make install
-
-echo "building mcfgthread"
-echo "======================="
-LDFLAGS+=" -Wl,--allow-multiple-definition"
-cd $M_SOURCE/mcfgthread
-meson setup build \
-  --prefix=$M_TARGET \
-  --cross-file=$TOP_DIR/cross.meson \
-  -Doptimization=1
-meson compile -C build
-meson install -C build
-rm -rf $M_TARGET/lib/pkgconfig
 
 echo "building mingw-w64-crt"
 echo "======================="
