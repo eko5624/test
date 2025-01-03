@@ -242,8 +242,7 @@ cd $M_SOURCE/mcfgthread
 meson setup build \
   --prefix=$M_TARGET \
   --cross-file=$TOP_DIR/cross.meson \
-  --buildtype=release \
-  -Dtest=false
+  --buildtype=release
 meson compile -C build
 meson install -C build
 rm -rf $M_TARGET/lib/pkgconfig
