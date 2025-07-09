@@ -1,4 +1,4 @@
-name: archlinux
+name: workdir
 defaults:
   run:
     shell: bash
