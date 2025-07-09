@@ -1,0 +1,22 @@
+name: archlinux
+defaults:
+  run:
+    shell: bash
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: docker://ghcr.io/eko5624/archlinux:latest      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: 显示当前工作目录
+        run: |
+          pwd
+          mkdir build && cd build
+      - name: 上级工作流改变工作目录后显示当前目录
+        run: |
+          pwd
