@@ -18,8 +18,6 @@ jobs:
           useradd builder -m
           echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           echo 'Defaults:builder env_keep += "GITHUB_ENV"' >> /etc/sudoers
-      - name: show GITHUB_ENV
-        run: cat /__w/_temp/_runner_file_commands/set_env_c52641e0-4710-4348-a725-05dd1751e502
       - name: show builder's envs
         run: sudo -H -u builder env
       - name: show envs
